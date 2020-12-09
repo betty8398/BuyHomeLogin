@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <View
-            android:id="@+id/view3"
+            android:id="@+id/email_frame_grey"
             android:layout_width="380dp"
             android:layout_height="53dp"
             android:layout_marginStart="16dp"
@@ -23,7 +23,20 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <View
-            android:id="@+id/view4"
+            android:id="@+id/email_frame_red"
+            android:layout_width="380dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rectengle_red"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <View
+            android:id="@+id/password_frame_grey"
             android:layout_width="380dp"
             android:layout_height="53dp"
             android:layout_marginStart="16dp"
@@ -32,7 +45,7 @@
             android:background="@drawable/rectengle_shap"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
+            app:layout_constraintTop_toBottomOf="@+id/email_frame_grey" />
 
         <TextView
             android:id="@+id/textView5"
@@ -52,10 +65,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="32dp"
+            android:background="@android:color/transparent"
             android:ems="10"
             android:hint="Your Email"
-            android:inputType="textPersonName"
-            android:background="@android:color/transparent"
+            android:inputType="textEmailAddress"
             android:maxLines="1"
             android:singleLine="true"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -101,6 +114,7 @@
             app:layout_constraintTop_toBottomOf="@+id/editText_password" />
 
         <View
+            android:id="@+id/line_lift"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginStart="16dp"
@@ -112,7 +126,7 @@
             app:layout_constraintTop_toTopOf="@+id/textView3" />
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/line_eigh"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginStart="16dp"
@@ -142,10 +156,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="32dp"
+            android:background="@android:color/transparent"
             android:ems="10"
             android:hint="Password"
-            android:inputType="textPersonName"
-            android:background="@android:color/transparent"
+            android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
@@ -172,7 +186,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view3"
+            app:layout_constraintTop_toTopOf="@+id/email_frame_grey"
             app:srcCompat="@drawable/message" />
 
         <ImageView
@@ -181,7 +195,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/view4"
+            app:layout_constraintTop_toTopOf="@+id/password_frame_grey"
             app:srcCompat="@drawable/password" />
 
         <TextView

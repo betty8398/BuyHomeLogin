@@ -20,5 +20,9 @@
         android:id="@+id/fragment_login_regester"
         android:name="com.example.buyhome_login.Fragment_login_regester"
         android:label="fragment_login_regester"
-        tools:layout="@layout/fragment_login_regester" />
+        tools:layout="@layout/fragment_login_regester" >
+        <action
+            android:id="@+id/action_fragment_login_regester_to_fragment_logiin1"
+            app:destination="@id/fragment_logiin1" />
+    </fragment>
 </navigation>
