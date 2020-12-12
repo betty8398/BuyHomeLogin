@@ -232,6 +232,10 @@ public class Fragment_logiin1 extends Fragment {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+            switch (e.getStatusCode()){
+                case 7:
+                    Toast.makeText(requireActivity(), "NETWORK_ERROR", Toast.LENGTH_SHORT).show();
+            }
             updateUI(null);
         }
     }
