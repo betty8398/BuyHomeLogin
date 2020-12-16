@@ -15,6 +15,7 @@
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".activity.SearchableActivity" /> <!-- 啟動模式設為 singleTop, 才不會每一次查詢, 都要建立 1 個新的 activity -->
+
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" /><!--googlePay 權限ok-->
