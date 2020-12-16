@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECEFF1">
+
+    <ImageView
+        android:id="@+id/img_item_frame"
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/frame_01" />
+
+    <ImageView
+        android:id="@+id/img_item_picture"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_item_frame"
+        app:layout_constraintStart_toStartOf="@+id/img_item_frame"
+        app:layout_constraintTop_toTopOf="@+id/img_item_frame"
+        app:srcCompat="@drawable/test_item" />
+
+    <TextView
+        android:id="@+id/tv_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="11"
+        android:text="ASUS X509MA-0291GN4020 星空灰 15.6吋窄邊筆電"
+        android:textColor="?android:attr/textColorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/img_item_picture"
+        app:layout_constraintTop_toTopOf="@+id/img_item_picture" />
+
+    <TextView
+        android:id="@+id/tv_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="$11111"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_item_picture"
+        app:layout_constraintEnd_toEndOf="@+id/img_item_frame" />
+
+    <TextView
+        android:id="@+id/tv_item_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="數量：2"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_item_price"
+        app:layout_constraintEnd_toEndOf="@+id/tv_item_price" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

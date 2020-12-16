@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/nav_fes"
-        android:name="com.example.shop.ui.notifications.spacial_ui.fes.FesFragment"
+        android:name="com.example.buyhome_login.ui.notifications.spacial_ui.fes.FesFragment"
         android:label="fes_fragment"
         tools:layout="@layout/fes_fragment" />
     <fragment
         android:id="@+id/nav_limit"
-        android:name="com.example.shop.ui.notifications.spacial_ui.limit.LimitFragment"
+        android:name="com.example.buyhome_login.ui.notifications.spacial_ui.limit.LimitFragment"
         android:label="limit_fragment"
         tools:layout="@layout/limit_fragment" />
     <fragment
         android:id="@+id/nav_only"
-        android:name="com.example.shop.ui.notifications.spacial_ui.only.OnlyFragment"
+        android:name="com.example.buyhome_login.ui.notifications.spacial_ui.only.OnlyFragment"
         android:label="only_fragment"
         tools:layout="@layout/only_fragment" />
 </navigation>

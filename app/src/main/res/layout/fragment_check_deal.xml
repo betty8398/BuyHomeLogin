@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECEFF1"
+    tools:context=".fragment_cart.CheckDeal">
+
+    <Button
+        android:id="@+id/btn_go_dopay"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_01"
+        android:shadowColor="#000000"
+        android:text="線上付款"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_delivery"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/frame_01"
+        android:src="@drawable/frame_01"
+        app:layout_constraintBottom_toTopOf="@+id/img_discount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_delivery_arrow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/arrow_right"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_delivery_display"
+        app:layout_constraintEnd_toEndOf="@+id/imgbtn_delivery"
+        app:layout_constraintTop_toTopOf="@+id/tv_delivery_display"
+        app:srcCompat="@drawable/arrow_right" />
+
+    <TextView
+        android:id="@+id/tv_delivery_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="宅配"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtn_delivery"
+        app:layout_constraintEnd_toStartOf="@+id/img_delivery_arrow"
+        app:layout_constraintTop_toTopOf="@+id/imgbtn_delivery" />
+
+    <TextView
+        android:id="@+id/tv_delivery_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="寄送方式："
+        android:textColor="#333333"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imgbtn_delivery"
+        app:layout_constraintStart_toStartOf="@+id/imgbtn_delivery"
+        app:layout_constraintTop_toTopOf="@+id/imgbtn_delivery" />
+
+    <ImageView
+        android:id="@+id/img_discount"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/frame_01"
+        app:layout_constraintBottom_toTopOf="@+id/img_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_discount_code_tip"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/frame_03"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="OK"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/et_discount_code"
+        app:layout_constraintEnd_toEndOf="@+id/et_discount_code"
+        app:layout_constraintTop_toTopOf="@+id/et_discount_code" />
+
+    <EditText
+        android:id="@+id/et_discount_code"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/frame_redline"
+        android:ems="10"
+        android:hint="請輸入折扣碼"
+        android:inputType="textPersonName"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_discount_code"
+        app:layout_constraintEnd_toEndOf="@+id/img_discount"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_discount_code"
+        app:layout_constraintTop_toTopOf="@+id/tv_discount_code"
+        app:layout_constraintVertical_bias="0.923" />
+
+    <TextView
+        android:id="@+id/tv_discount_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="選擇折價券："
+        android:textColor="#333333"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_discount"
+        app:layout_constraintStart_toStartOf="@+id/img_discount"
+        app:layout_constraintTop_toTopOf="@+id/img_discount" />
+
+    <ImageView
+        android:id="@+id/img_price"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_go_dopay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/frame_01" />
+
+    <TextView
+        android:id="@+id/tv_total_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="＄0.0"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_total_text"
+        app:layout_constraintEnd_toEndOf="@+id/tv_delivery_fee_display"
+        app:layout_constraintTop_toTopOf="@+id/tv_total_text" />
+
+    <TextView
+        android:id="@+id/tv_total_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="總付款金額："
+        android:textColor="#333333"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/img_price"
+        app:layout_constraintStart_toStartOf="@+id/tv_pure_price_text"
+        app:layout_constraintTop_toBottomOf="@+id/tv_delivery_fee_text" />
+
+    <TextView
+        android:id="@+id/tv_delivery_fee_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$60"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_delivery_fee_text"
+        app:layout_constraintEnd_toEndOf="@+id/tv_discount_display"
+        app:layout_constraintTop_toTopOf="@+id/tv_delivery_fee_text" />
+
+    <TextView
+        android:id="@+id/tv_delivery_fee_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="運費："
+        app:layout_constraintBottom_toTopOf="@+id/tv_total_text"
+        app:layout_constraintStart_toStartOf="@+id/tv_pure_price_text"
+        app:layout_constraintTop_toBottomOf="@+id/tv_discount_text" />
+
+    <TextView
+        android:id="@+id/tv_discount_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$20"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_discount_text"
+        app:layout_constraintEnd_toEndOf="@+id/tv_pure_price_display"
+        app:layout_constraintTop_toTopOf="@+id/tv_discount_text" />
+
+    <TextView
+        android:id="@+id/tv_discount_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="折抵："
+        app:layout_constraintBottom_toTopOf="@+id/tv_delivery_fee_text"
+        app:layout_constraintStart_toStartOf="@+id/tv_pure_price_text"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pure_price_text" />
+
+    <TextView
+        android:id="@+id/tv_pure_price_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="$600"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_pure_price_text"
+        app:layout_constraintEnd_toEndOf="@+id/img_price"
+        app:layout_constraintTop_toTopOf="@+id/tv_pure_price_text" />
+
+    <TextView
+        android:id="@+id/tv_pure_price_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="訂單金額："
+        app:layout_constraintBottom_toTopOf="@+id/tv_discount_text"
+        app:layout_constraintStart_toStartOf="@+id/img_price"
+        app:layout_constraintTop_toTopOf="@+id/img_price"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_checkdeal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:background="#ECEFF1"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtn_delivery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

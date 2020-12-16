@@ -5,8 +5,6 @@
     android:id="@+id/navigation_login"
     app:startDestination="@id/fragment_logiin1">
 
-
-
     <fragment
         android:id="@+id/fragment_logiin1"
         android:name="com.example.buyhome_login.Login.Fragment_logiin1"
