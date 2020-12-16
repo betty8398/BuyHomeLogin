@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.example.shop.FlickerTextView
+            <com.example.buyhome_login.FlickerTextView
                 android:id="@+id/flickerTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></com.example.shop.FlickerTextView>
+                app:layout_constraintTop_toTopOf="parent"></com.example.buyhome_login.FlickerTextView>
 
             <com.android.volley.toolbox.NetworkImageView
                 android:id="@+id/networkImageView1"

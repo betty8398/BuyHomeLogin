@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/shoppingCart"
-        android:name="com.example.buyhome_lcn.fragment_cart.ShoppingCart"
+        android:name="com.example.buyhome_login.fragment_cart.ShoppingCart"
         android:label="fragment_shopping_cart"
         tools:layout="@layout/fragment_shopping_cart" >
         <action
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/checkDelivery"
-        android:name="com.example.buyhome_lcn.fragment_cart.CheckDelivery"
+        android:name="com.example.buyhome_login.fragment_cart.CheckDelivery"
         android:label="fragment_check_delivery"
         tools:layout="@layout/fragment_check_delivery" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/checkDeal"
-        android:name="com.example.buyhome_lcn.fragment_cart.CheckDeal"
+        android:name="com.example.buyhome_login.fragment_cart.CheckDeal"
         android:label="fragment_check_deal"
         tools:layout="@layout/fragment_check_deal" >
         <action
@@ -74,12 +74,12 @@
     </fragment>
     <fragment
         android:id="@+id/doPay"
-        android:name="com.example.buyhome_lcn.fragment_cart.DoPay"
+        android:name="com.example.buyhome_login.fragment_cart.DoPay"
         android:label="fragment_do_pay"
         tools:layout="@layout/fragment_do_pay" />
     <fragment
         android:id="@+id/chooseAddress"
-        android:name="com.example.buyhome_lcn.fragment_cart.ChooseAddress"
+        android:name="com.example.buyhome_login.fragment_cart.ChooseAddress"
         android:label="fragment_choose_address"
         tools:layout="@layout/fragment_choose_address" >
         <action
@@ -92,7 +92,7 @@
     </fragment>
     <fragment
         android:id="@+id/chooseReceiver"
-        android:name="com.example.buyhome_lcn.fragment_cart.ChooseReceiver"
+        android:name="com.example.buyhome_login.fragment_cart.ChooseReceiver"
         android:label="fragment_choose_receiver"
         tools:layout="@layout/fragment_choose_receiver" >
         <action
@@ -105,7 +105,7 @@
     </fragment>
     <fragment
         android:id="@+id/chooseStore"
-        android:name="com.example.buyhome_lcn.fragment_cart.ChooseStore"
+        android:name="com.example.buyhome_login.fragment_cart.ChooseStore"
         android:label="fragment_choose_store"
         tools:layout="@layout/fragment_choose_store" >
         <action
