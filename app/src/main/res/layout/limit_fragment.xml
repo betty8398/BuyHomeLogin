@@ -48,13 +48,13 @@
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textSize="24dp" />
 
-            <com.example.shop.TimerTextView
+            <com.example.buyhome_login.TimerTextView
                 android:id="@+id/timer1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/design_default_color_error"
-                android:textSize="32dp"></com.example.shop.TimerTextView>
+                android:textSize="32dp"></com.example.buyhome_login.TimerTextView>
         </LinearLayout>
 
 
@@ -101,13 +101,13 @@
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textSize="24dp" />
 
-            <com.example.shop.TimerTextView
+            <com.example.buyhome_login.TimerTextView
                 android:id="@+id/timer2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/design_default_color_error"
-                android:textSize="32dp"></com.example.shop.TimerTextView>
+                android:textSize="32dp"></com.example.buyhome_login.TimerTextView>
         </LinearLayout>
 
 
@@ -155,13 +155,13 @@
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textSize="24dp" />
 
-            <com.example.shop.TimerTextView
+            <com.example.buyhome_login.TimerTextView
                 android:id="@+id/timer3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColor="@color/design_default_color_error"
-                android:textSize="32dp"></com.example.shop.TimerTextView>
+                android:textSize="32dp"></com.example.buyhome_login.TimerTextView>
         </LinearLayout>
 
 
