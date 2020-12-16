@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/fragment_logiin1"
-        android:name="com.example.buyhome_login.Fragment_logiin1"
+        android:name="com.example.buyhome_login.Login.Fragment_logiin1"
         android:label="fragment_logiin1"
         tools:layout="@layout/fragment_logiin1" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_login_regester"
-        android:name="com.example.buyhome_login.Fragment_login_regester"
+        android:name="com.example.buyhome_login.Login.Fragment_login_regester"
         android:label="fragment_login_regester"
         tools:layout="@layout/fragment_login_regester" >
         <action

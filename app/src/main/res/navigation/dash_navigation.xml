@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dash_navigation"
+    app:startDestination="@id/defaultFragment">
+
+    <fragment
+        android:id="@+id/defaultFragment"
+        android:name="com.example.shop.ui.dashboard.dash_ui.defaulthome.DefaultFragment"
+        android:label="default_fragment"
+        tools:layout="@layout/default_fragment" />
+    <fragment
+        android:id="@+id/nav_food"
+        android:name="com.example.shop.ui.dashboard.dash_ui.food.FoodFragment"
+        tools:layout="@layout/food_fragment" />
+    <fragment
+        android:id="@+id/nav_big"
+        android:name="com.example.shop.ui.dashboard.dash_ui.big.BigFragment"
+        tools:layout="@layout/big_fragment" />
+    <fragment
+        android:id="@+id/nav_3c"
+        android:name="com.example.shop.ui.dashboard.dash_ui.ccc.CccFragment"
+        tools:layout="@layout/ccc_fragment" />
+    <fragment
+        android:id="@+id/nav_clothing"
+        android:name="com.example.shop.ui.dashboard.dash_ui.clothing.ClothFragment"
+        tools:layout="@layout/cloth_fragment" />
+    <fragment
+        android:id="@+id/nav_dec"
+        android:name="com.example.shop.ui.dashboard.dash_ui.dec.DecFragment"
+        tools:layout="@layout/dec_fragment" />
+</navigation>

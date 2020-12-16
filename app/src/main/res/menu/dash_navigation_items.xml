@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_food"
+        android:title="食品" />
+    <item
+        android:id="@+id/nav_clothing"
+        android:title="服飾" />
+    <item
+        android:id="@+id/nav_3c"
+        android:title="3C" />
+    <item
+        android:id="@+id/nav_dec"
+        android:title="裝飾/填充物" />
+    <item
+        android:id="@+id/nav_big"
+        android:title="大型物件" />
+</menu>

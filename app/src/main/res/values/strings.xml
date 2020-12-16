@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">BuyHome_Login</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">BuyHome</string>
+    <string name="add_to_car">立馬加入購物車!!!加入購物車!!!</string>
+    <string name="slog">Buy家\n給你一個新家</string>
+    <string name="title_activity_product">MainActivity</string>
+    <string name="title_home">首頁</string>
+    <string name="title_dashboard">分類</string>
+    <string name="title_cart">購物車</string>
+    <string name="title_notification">專屬</string>
+    <string name="title_user">我的</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

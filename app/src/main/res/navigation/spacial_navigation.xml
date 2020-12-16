@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spacial_navigation"
+    app:startDestination="@id/nav_fes">
+
+    <fragment
+        android:id="@+id/nav_fes"
+        android:name="com.example.shop.ui.notifications.spacial_ui.fes.FesFragment"
+        android:label="fes_fragment"
+        tools:layout="@layout/fes_fragment" />
+    <fragment
+        android:id="@+id/nav_limit"
+        android:name="com.example.shop.ui.notifications.spacial_ui.limit.LimitFragment"
+        android:label="limit_fragment"
+        tools:layout="@layout/limit_fragment" />
+    <fragment
+        android:id="@+id/nav_only"
+        android:name="com.example.shop.ui.notifications.spacial_ui.only.OnlyFragment"
+        android:label="only_fragment"
+        tools:layout="@layout/only_fragment" />
+</navigation>
