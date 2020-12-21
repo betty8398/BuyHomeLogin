@@ -63,7 +63,7 @@
             android:name="android.app.default_searchable"
             android:value=".activity.SearchableActivity" />
 
-        <activity android:name=".MemberAreaActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,7 +84,7 @@
         <activity android:name=".activity.ProductDetailActivity" />
         <activity android:name=".Login.MainActivity" />
         <activity android:name=".MainActivity_shopping_cart" />
-<!--        <activity android:name=".MemberAreaActivity" />-->
+        <activity android:name=".MemberAreaActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
