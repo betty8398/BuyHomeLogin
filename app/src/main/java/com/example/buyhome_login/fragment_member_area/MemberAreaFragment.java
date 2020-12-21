@@ -2,20 +2,22 @@ package com.example.buyhome_login.fragment_member_area;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.buyhome_login.R;
 import com.example.buyhome_login.data.MemberAreaViewModel;
@@ -30,6 +32,8 @@ public class MemberAreaFragment extends Fragment {
     View view;
     Context context;
     ListView lvAccountArea;
+
+    ImageView imgUserPhoto;
 
     TextView tvNickname, tvAccount;
 
@@ -57,6 +61,11 @@ public class MemberAreaFragment extends Fragment {
 
         //取得自定義 ViewModel
         viewModel = new ViewModelProvider(requireActivity()).get(MemberAreaViewModel.class);
+
+        imgUserPhoto = view.findViewById(R.id.img_user_photo);
+        if(viewModel.getHasPhoto()){
+            imgUserPhoto.setImageBitmap(viewModel.getUserPhotoBitmap());
+        }
 
         tvNickname = view.findViewById(R.id.tv_nickname);
         tvNickname.setText(viewModel.getNickname());

@@ -11,7 +11,8 @@ public class MemberAreaViewModel extends ViewModel {
     public String payMethod;
 
     //使用者資訊
-    public Bitmap userPhoto;
+    public Boolean hasPhoto;
+    public Bitmap userPhotoBitmap;
     public String nickname;
     public String account_id;
     public String password;
@@ -32,7 +33,8 @@ public class MemberAreaViewModel extends ViewModel {
         store = "全家 楊梅幼獅店";
         payMethod = "宅配";
 
-//        userPhoto = ;
+
+        hasPhoto = false;
         account_id = "MyAccount";
         nickname = "Mr. Hello World";
         password = "123123";
@@ -40,6 +42,22 @@ public class MemberAreaViewModel extends ViewModel {
         birthday = 20201212;
         phone = "0911222333";
         email = "myaccount@gmail.com";
+    }
+
+    public Bitmap getUserPhotoBitmap() {
+        return userPhotoBitmap;
+    }
+
+    public void setUserPhotoBitmap(Bitmap userPhotoBitmap) {
+        this.userPhotoBitmap = userPhotoBitmap;
+    }
+
+    public Boolean getHasPhoto() {
+        return hasPhoto;
+    }
+
+    public void setHasPhoto(Boolean hasPhoto) {
+        this.hasPhoto = hasPhoto;
     }
 
     public String getAddress() {
@@ -64,14 +82,6 @@ public class MemberAreaViewModel extends ViewModel {
 
     public void setPayMethod(String payMethod) {
         this.payMethod = payMethod;
-    }
-
-    public Bitmap getUserPhoto() {
-        return userPhoto;
-    }
-
-    public void setUserPhoto(Bitmap userPhoto) {
-        this.userPhoto = userPhoto;
     }
 
     public String getNickname() {
