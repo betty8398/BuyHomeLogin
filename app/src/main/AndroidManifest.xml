@@ -32,12 +32,19 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
+
+        <!--google map-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <!--google Pay-->
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
-            android:value="true" /> <!-- googlePay 權限ok -->
+            android:value="true" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".activity.MapsActivity"
@@ -80,14 +87,13 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activity.ProductActivity" />
         <activity android:name=".activity.ProductDetailActivity" />
         <activity android:name=".Login.MainActivity" />
         <activity android:name=".MainActivity_shopping_cart" />
         <activity android:name=".MemberAreaActivity" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

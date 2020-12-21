@@ -53,6 +53,7 @@ public class Fragment_login_regester extends Fragment {
     private FirebaseDatabase fbControl;
     private String name, email, password;
     private long index;
+    private boolean userExist;
 
     public Fragment_login_regester() {
         // Required empty public constructor
@@ -122,65 +123,64 @@ public class Fragment_login_regester extends Fragment {
                     name = editText_name.getText().toString();
                     email = editText_Remail.getText().toString();
                     password = editText_Rpassword.getText().toString();
-                    //TODO:必須檢查會員存不存在
 
                     //TODO:註冊firebase會員
+                        authControl.createUserWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                //TODO:如果成功在firebase-auth建立帳號 更新資料庫會員資訊
+                                if (task.isSuccessful()) { //firebase會把關 不讓註冊過的email進來
+                                    Log.d(TAG, "註冊成功");
+                                    Toast.makeText(getActivity(), "註冊成功", Toast.LENGTH_SHORT).show();
+                                    //取得最近登入的user(就是剛註冊成功的會員)
+                                    FirebaseUser user = authControl.getCurrentUser();
 
-                    authControl.createUserWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            //TODO:如果成功在firebase-auth建立帳號 更新資料庫會員資訊
-                            if (task.isSuccessful()) {
-                                Log.d(TAG, "註冊成功");
-                                Toast.makeText(getActivity(), "註冊成功", Toast.LENGTH_SHORT).show();
-                                //取得最近登入的user(就是剛註冊成功的會員)
-                                FirebaseUser user = authControl.getCurrentUser();
-
-                                //手動新增資料庫會員資料
-                                Map<String, Object> data = new HashMap<String, Object>();
-                                data.put("id", authControl.getUid());
-                                data.put("name", name);
-                                data.put("email", email);
-                                data.put("password", password);
-                                //以下為預留給使用者填寫詳情資料
-                                data.put("birth", "null");
-                                data.put("gender", "null");
-                                data.put("imageURL", "null");
-                                data.put("location", "null");
-                                data.put("shoppingCart", "null");
-
-
-                                String at = index + "";
-                                Log.d(TAG, "at=" + at);
-                                Task<Void> result = classDB.child(at).setValue(data);
-
-                                //classDB.child("4").child("name").setValue("Richard");
+                                    //手動新增資料庫會員資料
+                                    Map<String, Object> data = new HashMap<String, Object>();
+                                    data.put("id", authControl.getUid());
+                                    data.put("name", name);
+                                    data.put("email", email);
+                                    data.put("password", password);
+                                    //以下為預留給使用者填寫詳情資料
+                                    data.put("birth", "null");
+                                    data.put("gender", "null");
+                                    data.put("imageURL", "null");
+                                    data.put("location", "null");
+                                    data.put("shoppingCart", "null");
 
 
-                                //2.監聽"新增成功"事件
-                                result.addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Log.d(TAG, "更新firebase json會員資料 成功");
-                                    }
-                                });
+                                    String at = index + "";
+                                    Log.d(TAG, "at=" + at);
+                                    Task<Void> result = classDB.child(at).setValue(data);
 
-                                //3.監聽"新增失敗"事件
-                                result.addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.d(TAG, "更新firebase json會員資料 失敗");
-                                    }
-                                });
-                                //列印出用戶訊息
-                                DisplayUser(user);
+                                    //classDB.child("4").child("name").setValue("Richard");
 
-                            } else {
-                                Log.d(TAG, "Register fail");
-                                Toast.makeText(getActivity(), "註冊失敗", Toast.LENGTH_SHORT).show();
+
+                                    //2.監聽"新增成功"事件
+                                    result.addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d(TAG, "更新firebase json會員資料 成功");
+                                        }
+                                    });
+
+                                    //3.監聽"新增失敗"事件
+                                    result.addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d(TAG, "更新firebase json會員資料 失敗");
+
+                                        }
+                                    });
+                                    //列印出用戶訊息
+                                    DisplayUser(user);
+
+                                } else {
+                                    Log.d(TAG, "Register fail");
+                                    Toast.makeText(getActivity(), "註冊失敗", Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });//註冊會員 End
+                        });//註冊會員 End
 
 
                     ArrayList<Map<String, String>> dataList = new ArrayList<>();
@@ -222,9 +222,6 @@ public class Fragment_login_regester extends Fragment {
 
                         }
                     });
-
-                    //TODO:Google會員存資料
-
                 }
             }
         });

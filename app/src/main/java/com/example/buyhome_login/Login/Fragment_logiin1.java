@@ -33,10 +33,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Fragment_logiin1 extends Fragment {
     private Button button_signIn;
@@ -51,11 +58,15 @@ public class Fragment_logiin1 extends Fragment {
     private FirebaseAuth authControl;
     private FirebaseUser currentUser;
     //取得使用者資訊
+    private GoogleSignInAccount account;
     private String username,useremail,userid;
     private Uri userphotourl;
     //建立回傳端編號常數
     private final int RETURN_DATA = 10;
     private String Fname,Femail,FUID;
+    private int index;
+    private DatabaseReference classDB;
+    private FirebaseDatabase fbControl;
 
     public Fragment_logiin1() {
         // Required empty public constructor
@@ -110,19 +121,27 @@ public class Fragment_logiin1 extends Fragment {
         });
 
 
-
-
-        //TODO:轉接到成功登入畫面
-        button_signIn.setOnClickListener(new View.OnClickListener() {
+        //取得FirebaseDatabase物件(用來儲存資料)
+        fbControl = FirebaseDatabase.getInstance();
+        classDB = fbControl.getReference("user");
+        //取得user資料筆數
+        classDB.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.button_signIn:
-                        Navigation.findNavController(view).navigate(R.id.action_fragment_login_regester_to_fragment_logiin1);
-                        break;
-                }
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                int dataCount = (int) snapshot.getChildrenCount();//有幾筆資料
+                index = dataCount;
+            }
+
+            //監聽"資料更新失敗"事件
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
+
+
+
 
         //TODO:按下google登入按鈕 轉接到Google登入API
         button_gLogin.setOnClickListener(new View.OnClickListener() {
@@ -238,15 +257,31 @@ public class Fragment_logiin1 extends Fragment {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
 
         try {
-            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            account = completedTask.getResult(ApiException.class);
             username = account.getDisplayName();
             useremail=account.getEmail();
             userid=account.getId();
             userphotourl=account.getPhotoUrl();
 
+            //手動新增Google資料庫會員資料
+            Map<String, Object> data = new HashMap<String, Object>();
+            data.put("id", userid);
+            data.put("name", username);
+            data.put("email", useremail);
+            data.put("password", "null");
+            //以下為預留給使用者填寫詳情資料
+            data.put("birth", "null");
+            data.put("gender", "null");
+            data.put("imageURL",userphotourl.toString());
+            data.put("location", "null");
+            data.put("shoppingCart", "null");
+
+            String at = index + "";
+            Log.d(TAG, "at=" + at);
+            Task<Void> result = classDB.child(at).setValue(data);
+
             // Signed in successfully, show authenticated UI.
             updateUI(account);
-
 
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -265,6 +300,7 @@ public class Fragment_logiin1 extends Fragment {
          Fname = user.getDisplayName();
          Femail = user.getEmail();
          FUID = user.getUid();
+
     }
 
 
@@ -275,6 +311,7 @@ public class Fragment_logiin1 extends Fragment {
 
         } else if (account != null && authControl.getCurrentUser() == null) {
             Toast.makeText(getActivity(), "google 登入成功", Toast.LENGTH_SHORT).show();
+
             //設定回傳用的intent
             Intent intent = new Intent(getActivity(),MemberAreaActivity.class);
             //放入資料，引數一為key，引數二為value
