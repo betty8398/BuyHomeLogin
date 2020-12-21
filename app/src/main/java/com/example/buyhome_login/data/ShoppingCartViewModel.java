@@ -107,7 +107,7 @@ public class ShoppingCartViewModel extends ViewModel {
     }
 
     /**
-     * 商品數量加一
+     * 指定商品數量加一
      */
     public void onAddAmount(int index){
         if(_amountList.getValue().get(index) < 99){
@@ -120,7 +120,7 @@ public class ShoppingCartViewModel extends ViewModel {
     }
 
     /**
-     * 商品數量減一
+     * 指定商品數量減一
      */
     public void onSubAmount(int index){
         if(_amountList.getValue().get(index) > 0) {
@@ -267,17 +267,17 @@ public class ShoppingCartViewModel extends ViewModel {
     }
 
     /**
-     * 新增宅配地址
+     * 取得所有門市
      */
-    public void addAddress(String newAddress){
-        addressList.add(newAddress);
-    }
+    public ArrayList<String> getStoreList(){
+        ArrayList<String> resultList = new ArrayList<>();
+        String[] tempStr;
 
-    /**
-     * 刪除指定宅配地址
-     */
-    public void deleteAddress(int index){
-        addressList.remove(index);
+        for(int i = 0 ; i < storeList.size() ; i++){
+            tempStr = storeList.get(i).split("#");
+            resultList.add(tempStr[1] + "  " + tempStr[2]);
+        }
+        return resultList;
     }
 
     /**
@@ -292,6 +292,34 @@ public class ShoppingCartViewModel extends ViewModel {
      */
     public void deleteReceiver(int index){
         receiverList.remove(index);
+    }
+
+    /**
+     * 新增宅配地址
+     */
+    public void addAddress(String newAddress){
+        addressList.add(newAddress);
+    }
+
+    /**
+     * 刪除指定宅配地址
+     */
+    public void deleteAddress(int index){
+        addressList.remove(index);
+    }
+
+    /**
+     * 新增門市
+     */
+    public void addStore(String newStore){
+        storeList.add(newStore);
+    }
+
+    /**
+     * 刪除指定門市
+     */
+    public void deleteStore(int index){
+        storeList.remove(index);
     }
 
     /**
@@ -329,6 +357,19 @@ public class ShoppingCartViewModel extends ViewModel {
         String[] tempStr;
         tempStr = defaultAddress.split("#");
         result = tempStr[1] + tempStr[2] + tempStr[3];
+
+        return result;
+    }
+
+    /**
+     * 取得預設超商
+     * @return
+     */
+    public String getDefaultStore(){
+        String result;
+        String[] tempStr;
+        tempStr = defaultStore.split("#");
+        result = tempStr[1] +"  " + tempStr[2];
 
         return result;
     }

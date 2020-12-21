@@ -1,6 +1,12 @@
 package com.example.buyhome_login.fragment_cart;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -11,20 +17,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
-
 import com.example.buyhome_login.R;
 import com.example.buyhome_login.data.ShoppingCartViewModel;
-
 
 public class CheckDelivery extends Fragment {
     View view;
     private ShoppingCartViewModel viewModel;
 
-    TextView tvReceiver, tvPhone, tvAddress;
+    TextView tvReceiver, tvPhone, tvAddress, tvStorePickup;
     Button btnGoBack, btnChooseReceiver, btnChooseAddress, btnChooseStore;
     CheckBox cbHome, cbStore;
 
@@ -41,13 +41,6 @@ public class CheckDelivery extends Fragment {
 
         chooseDeliveryWay(view);
 
-        tvAddress = view.findViewById(R.id.tv_home_delivery_adress);
-        if(viewModel.defaultReceiver.length() != 0){
-            tvAddress.setText(viewModel.getDefaultAddress());
-        }else{
-            tvAddress.setText("");
-        }
-
         tvReceiver = view.findViewById(R.id.tv_recipient_name_display);
         if(viewModel.defaultReceiver.length() != 0){
             tvReceiver.setText(viewModel.getDefaultName());
@@ -60,6 +53,20 @@ public class CheckDelivery extends Fragment {
             tvPhone.setText(viewModel.getDefaultPhone());
         }else{
             tvPhone.setText("");
+        }
+
+        tvAddress = view.findViewById(R.id.tv_home_delivery_adress);
+        if(viewModel.defaultReceiver.length() != 0){
+            tvAddress.setText(viewModel.getDefaultAddress());
+        }else{
+            tvAddress.setText("");
+        }
+
+        tvStorePickup = view.findViewById(R.id.tv_store_pickup);
+        if(viewModel.defaultReceiver.length() != 0){
+            tvStorePickup.setText(viewModel.getDefaultStore());
+        }else{
+            tvStorePickup.setText("");
         }
 
 
