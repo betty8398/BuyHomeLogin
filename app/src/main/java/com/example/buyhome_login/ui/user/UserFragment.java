@@ -30,6 +30,7 @@ public class UserFragment extends Fragment {
     private FirebaseUser currentUser;
     private GoogleSignInAccount account;
 
+
     public static UserFragment newInstance() {
         return new UserFragment();
     }
@@ -40,6 +41,7 @@ public class UserFragment extends Fragment {
         root=inflater.inflate(R.layout.user_fragment, container, false);
         //最近登入的google帳號
         account = GoogleSignIn.getLastSignedInAccount(getActivity());
+        //最近登入的Firebase帳號
         authControl = FirebaseAuth.getInstance();
         currentUser = authControl.getCurrentUser();
 
