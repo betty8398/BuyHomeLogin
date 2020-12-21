@@ -149,12 +149,17 @@ public class ProductDetailActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getAction()==MotionEvent.ACTION_DOWN){
                     goto_map.setBackgroundColor(Color.parseColor("#34B403F4"));
-                    Uri gmmIntentUri = Uri.parse("geo:"+getIntent().getFloatExtra("lat",0)+","+getIntent().getFloatExtra("lng",0));
-                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-//                    mapIntent.setPackage("com.google.android.apps.maps");
-//                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
-                        startActivity(mapIntent);
+//                    Uri gmmIntentUri = Uri.parse("geo:"+getIntent().getFloatExtra("lat",0)+","+getIntent().getFloatExtra("lng",0));
+//                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+////                    mapIntent.setPackage("com.google.android.apps.maps");
+////                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+//                        startActivity(mapIntent);
 //                    }
+                    Intent intent=new Intent(ProductDetailActivity.this,MapsActivity.class);
+                    intent.putExtra("lat",getIntent().getFloatExtra("lat",0));
+                    intent.putExtra("lng",getIntent().getFloatExtra("lng",0));
+                    intent.putExtra("title",getIntent().getStringExtra("title"));
+                    startActivity(intent);
 
                 }else{
                     goto_map.setBackgroundResource(R.drawable.frame_01);
