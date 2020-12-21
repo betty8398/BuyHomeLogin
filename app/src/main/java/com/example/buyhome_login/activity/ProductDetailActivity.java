@@ -25,10 +25,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.buyhome_login.Login.MainActivity;
 import com.example.buyhome_login.MainActivity_shopping_cart;
+import com.example.buyhome_login.MemberAreaActivity;
 import com.example.buyhome_login.R;
 import com.example.buyhome_login.adapter.ViewPagerAdapter;
 import com.example.buyhome_login.network.ProductEntry;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +50,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private LinearLayout goto_rating,goto_map;
     private Button add_to_car;
     private ImageView image_love;
+    private Context context;
 
 
     @Override
@@ -81,6 +88,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         goto_map=(LinearLayout)findViewById(R.id.goto_map);
         add_to_car=(Button)findViewById(R.id.add_rate);
         image_love=(ImageView)findViewById(R.id.image_love);
+        context=this;
     }
 
     private void setAdapter() {
@@ -97,9 +105,24 @@ public class ProductDetailActivity extends AppCompatActivity {
         add_to_car.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ProductDetailActivity.this, MainActivity_shopping_cart.class);
-                intent.putExtra("id",product_id);
-                startActivity(intent);
+                //最近登入的google帳號
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(context);
+                //最近登入的Firebase帳號
+                FirebaseAuth authControl = FirebaseAuth.getInstance();
+                FirebaseUser currentUser = authControl.getCurrentUser();
+
+                if(account==null && currentUser==null){
+                    //都沒登入過 前往登入頁面
+                    Intent intent=new Intent(context, MainActivity.class);
+                    startActivity(intent);
+                }else {
+                    //有登入過 把商品加入購物車 並傳入商品id
+                    Intent intent=new Intent(ProductDetailActivity.this, MainActivity_shopping_cart.class);
+                    intent.putExtra("id",product_id);
+                    startActivity(intent);
+                }
+
+
             }
         });
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
