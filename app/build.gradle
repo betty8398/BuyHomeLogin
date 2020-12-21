@@ -52,7 +52,7 @@ dependencies {
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'//build debug 會衝突
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     // ViewModel
