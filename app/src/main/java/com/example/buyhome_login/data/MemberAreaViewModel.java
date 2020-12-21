@@ -10,38 +10,75 @@ public class MemberAreaViewModel extends ViewModel {
     public String store;
     public String payMethod;
 
-    //使用者資訊
+    //使用者基本資訊
     public Boolean hasPhoto;
     public Bitmap userPhotoBitmap;
     public String nickname;
-    public String account_id;
+    public String email;
+
+    //使用者資訊
     public String password;
     public int gender;
     private final int GENDER_UNKNOWN = 0;
     private final int GENDER_FEMALE = 1;
     private final int GENDER_MALE = 2;
-    public int birthday;
+    public String birthday;
     public String phone;
-    public String email;
 
     /**
      * 初始化
      */
     public MemberAreaViewModel() {
-        //TODO 假資料要換真資料
-        address = "台北市信義區信義路五段7號89樓";
+        //初始化帳號資訊
+        address = "";
+        store = "";
+        payMethod = "";
+
+        //初始化頭像、暱稱、信箱
+        hasPhoto = false;
+        nickname = "";
+        email = "";
+
+        //初始化基本資訊
+        password = "";
+        gender = GENDER_UNKNOWN;
+        birthday = "";
+        phone = "";
+
+        initMemberInfo();
+        initUserBasicInfo();
+        initUserInfo();
+    }
+
+    //TODO 假資料要換真資料
+    /**
+     * 初始化帳號資訊
+     */
+    private void initMemberInfo(){
+        address = "台北市信義區\n信義路五段7號89樓";
         store = "全家 楊梅幼獅店";
         payMethod = "宅配";
+    }
 
-
+    //TODO 假資料要換真資料
+    /**
+     * 初始化頭像、暱稱、信箱
+     */
+    private void initUserBasicInfo(){
         hasPhoto = false;
-        account_id = "MyAccount";
         nickname = "Mr. Hello World";
+        email = "myaccount@gmail.com";
+    }
+
+    //TODO 假資料要換真資料
+    /**
+     * 初始化基本資訊
+     */
+    private void initUserInfo(){
         password = "123123";
         gender = GENDER_FEMALE;
-        birthday = 20201212;
+        birthday = "20201212";
         phone = "0911222333";
-        email = "myaccount@gmail.com";
     }
 
     public Bitmap getUserPhotoBitmap() {
@@ -92,16 +129,17 @@ public class MemberAreaViewModel extends ViewModel {
         this.nickname = nickname;
     }
 
-    public String getAccount_id() {
-        return account_id;
-    }
-
-    public void setAccount_id(String account_id) {
-        this.account_id = account_id;
-    }
-
     public String getPassword() {
         return password;
+    }
+
+    public String getPasswordHided() {
+        int length = password.length();
+        StringBuilder hidedPWD = new StringBuilder();
+        for(int i = 0 ; i < length ; i++){
+            hidedPWD.append("*");
+        }
+        return hidedPWD.toString();
     }
 
     public void setPassword(String password) {
@@ -125,11 +163,11 @@ public class MemberAreaViewModel extends ViewModel {
         this.gender = gender;
     }
 
-    public int getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(int birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
