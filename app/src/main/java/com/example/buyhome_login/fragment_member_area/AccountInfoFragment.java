@@ -57,14 +57,14 @@ public class AccountInfoFragment extends Fragment {
             R.drawable.ic_phone, R.drawable.ic_email};
 
     String[] infoTextList = {
-            "帳號", "密碼",
+            "暱稱", "密碼",
             "性別", "生日",
             "手機", "信箱"};
 
     String[] showInfoTextList;
 
     Integer[] showNextSign = {
-            null, R.drawable.arrow_right,
+            R.drawable.arrow_right, R.drawable.arrow_right,
             R.drawable.arrow_right, R.drawable.arrow_right,
             R.drawable.arrow_right, R.drawable.arrow_right};
 
@@ -79,10 +79,9 @@ public class AccountInfoFragment extends Fragment {
         //取得自定義 ViewModel
         viewModel = new ViewModelProvider(requireActivity()).get(MemberAreaViewModel.class);
 
-
-
         showInfoTextList = new String[]{
-                "", viewModel.getPassword(),
+                viewModel.getNickname(),
+                viewModel.getPasswordHided(),
                 viewModel.getGender(),
                 String.valueOf(viewModel.getBirthday()),
                 viewModel.getPhone(),

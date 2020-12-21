@@ -51,6 +51,13 @@ public class MemberAreaFragment extends Fragment {
             "超商取貨門市", "付款方式",
             "通知", "我的商店"};
 
+    String[] showInfoTextList;
+
+    Integer[] showNextSign = {
+            R.drawable.arrow_right, R.drawable.arrow_right,
+            R.drawable.arrow_right, R.drawable.arrow_right,
+            null, null};
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,14 +78,24 @@ public class MemberAreaFragment extends Fragment {
         tvNickname.setText(viewModel.getNickname());
 
         tvAccount = view.findViewById(R.id.tv_account);
-        tvAccount.setText(viewModel.getAccount_id());
+        tvAccount.setText(viewModel.getEmail());
 
         itemList = new ArrayList<Map<String, Object>>();
+
+        showInfoTextList = new String[]{
+                "",
+                viewModel.getAddress(),
+                viewModel.getStore(),
+                viewModel.getPayMethod(),
+                "",
+                ""};
 
         for(int i = 0 ; i < infoImgList.length ; i++){
             Map<String, Object> item = new HashMap<String, Object>();
             item.put("img", infoImgList[i]);
             item.put("info", infoTextList[i]);
+            item.put("showInfo", showInfoTextList[i]);
+            item.put("showNextSign", showNextSign[i]);
             itemList.add(item);
         }
 
@@ -86,8 +103,8 @@ public class MemberAreaFragment extends Fragment {
         SimpleAdapter adapter = new SimpleAdapter(
                 context, itemList,
                 R.layout.item_accountarea,
-                new String[]{"img", "info"},
-                new int[]{R.id.img_info, R.id.tv_info});
+                new String[]{"img", "info", "showInfo", "showNextSign"},
+                new int[]{R.id.img_info, R.id.tv_info, R.id.tv_show_info, R.id.img_next_sign});
 
         lvAccountArea.setAdapter(adapter);
 
