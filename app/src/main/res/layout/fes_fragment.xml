@@ -12,85 +12,31 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <com.example.buyhome_login.FlickerTextView
-                android:id="@+id/flickerTextView"
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/main_viewpager"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:background="#474444"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.viewpager.widget.ViewPager>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_fes"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="豪華聖誕新北童話\n一日遊"
-                android:textSize="32dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></com.example.buyhome_login.FlickerTextView>
+                app:layout_constraintTop_toBottomOf="@+id/main_viewpager" />
 
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/networkImageView1"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/flickerTextView"></com.android.volley.toolbox.NetworkImageView>
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="限時特價88%Off!!!\n快來和我一起旅行吧\n優惠代碼：52318"
-                android:textColor="@color/design_default_color_error"
-                android:textSize="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/networkImageView1"></TextView>
-
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/networkImageView2"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8"></com.android.volley.toolbox.NetworkImageView>
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="｡ﾟヽ(ﾟ´Д`)ﾉﾟ｡ 拜託啦~麻吉啦~"
-                android:textColor="@color/design_default_color_error"
-                android:textSize="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/networkImageView2"></TextView>
-
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/networkImageView3"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView9"></com.android.volley.toolbox.NetworkImageView>
-
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/networkImageView4"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="32dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/networkImageView3"></com.android.volley.toolbox.NetworkImageView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -1,6 +1,6 @@
 package com.example.buyhome_login.ui.notifications.spacial_ui.fes;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,19 +10,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
-import com.android.volley.toolbox.NetworkImageView;
-import com.example.buyhome_login.FlickerTextView;
 import com.example.buyhome_login.R;
-import com.example.buyhome_login.network.ImageRequester;
+import com.example.buyhome_login.activity.ProductDetailActivity;
+import com.example.buyhome_login.adapter.ProductCardRecyclerViewAdapter;
+import com.example.buyhome_login.adapter.ViewPagerAdapter;
+import com.example.buyhome_login.network.ProductEntry;
 
-public class FesFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class FesFragment extends Fragment implements ProductCardRecyclerViewAdapter.OnItemClickListener {
 
     private FesViewModel mViewModel;
     private View root;
-    private NetworkImageView networkImageView1,networkImageView2,networkImageView3,networkImageView4;
-    private ImageRequester imageRequester;
-    private FlickerTextView flickerTextView;
+    private ViewPager main_viewpager;
+    private RecyclerView recyclerview_fes;
+    private ProductCardRecyclerViewAdapter adapter_v;
+    private List<ProductEntry> productList_t;
+    private List<ProductEntry> productList;
 
     public static FesFragment newInstance() {
         return new FesFragment();
@@ -32,26 +41,35 @@ public class FesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         root= inflater.inflate(R.layout.fes_fragment, container, false);
+        setData();
         findView();
-        setImage();
+        setAdapter();
         return root;
     }
 
-    private void setImage() {
-        imageRequester=ImageRequester.getInstance(getContext());
-        imageRequester.setImageFromUrl(networkImageView1,"https://christmasland.ntpc.gov.tw/img/zone/zone_1.jpg?V=4.81");
-        imageRequester.setImageFromUrl(networkImageView2,"https://christmasland.ntpc.gov.tw/img/zone/zone_5.jpg?V=4.81");
-        imageRequester.setImageFromUrl(networkImageView3,"https://christmasland.ntpc.gov.tw/img/zone/zone_8.jpg?V=4.81");
-        imageRequester.setImageFromUrl(networkImageView4,"https://christmasland.ntpc.gov.tw/img/zone/zone_40.jpg?V=4.81");
-        flickerTextView.setGrad(new int[]{Color.RED,0xffffff,Color.GREEN});
+    private void setData() {
+        productList_t= ProductEntry.initProductEntryList(getResources());
+        productList=new ArrayList<>();
+        for(ProductEntry p:productList_t){
+            if(p.id>1038){
+                productList.add(p);
+            }
+        }
+    }
+
+    private void setAdapter() {
+        ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getContext(),productList);
+        main_viewpager.setAdapter(viewPagerAdapter);
+        adapter_v=new ProductCardRecyclerViewAdapter(getContext(),productList);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
+        recyclerview_fes.setAdapter(adapter_v);
+        recyclerview_fes.setLayoutManager(gridLayoutManager);
+        adapter_v.setOnItemClickListener(this);
     }
 
     private void findView() {
-        networkImageView1=(NetworkImageView)root.findViewById(R.id.networkImageView1);
-        networkImageView2=(NetworkImageView)root.findViewById(R.id.networkImageView2);
-        networkImageView3=(NetworkImageView)root.findViewById(R.id.networkImageView3);
-        networkImageView4=(NetworkImageView)root.findViewById(R.id.networkImageView4);
-        flickerTextView=(FlickerTextView)root.findViewById(R.id.flickerTextView);
+        main_viewpager=(ViewPager)root.findViewById(R.id.main_viewpager);
+        recyclerview_fes=(RecyclerView)root.findViewById(R.id.recyclerview_fes);
     }
 
     @Override
@@ -61,4 +79,20 @@ public class FesFragment extends Fragment {
         // TODO: Use the ViewModel
     }
 
+    @Override
+    public void onClick(View parent, int position) {
+        Intent intent=new Intent(getActivity(), ProductDetailActivity.class);
+        intent.putExtra("id",productList.get(position).id);
+        intent.putExtra("sellerId",productList.get(position).sellerId);
+        intent.putExtra("title",productList.get(position).title);
+        intent.putExtra("price",productList.get(position).price);
+        intent.putExtra("url",productList.get(position).url);
+        intent.putExtra("description",productList.get(position).description);
+        intent.putExtra("rate",productList.get(position).buyerRating.rate);
+        intent.putExtra("buyerId",productList.get(position).buyerRating.buyerId);
+        intent.putExtra("describe",productList.get(position).buyerRating.describe);
+        intent.putExtra("lat",productList.get(position).location.lat);
+        intent.putExtra("lng",productList.get(position).location.lng);
+        startActivityForResult(intent,200);
+    }
 }

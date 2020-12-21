@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.buyhome_login.R;
+import com.example.buyhome_login.activity.ProductActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -49,7 +50,6 @@ public class Fragment_logiin1 extends Fragment {
     public Fragment_logiin1() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,11 +96,12 @@ public class Fragment_logiin1 extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.button_signIn:
-                        Navigation.findNavController(view).navigate(R.id.action_fragment_logiin1_to_fragment_login_regester);
+                        Navigation.findNavController(view).navigate(R.id.action_fragment_login_regester_to_fragment_logiin1);
                         break;
                 }
             }
         });
+
         //TODO:按下google登入按鈕 轉接到Google登入API
         button_gLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,29 +141,35 @@ public class Fragment_logiin1 extends Fragment {
             public void onClick(View v) {
                 email = editText_email.getText().toString();
                 password = editText_password.getText().toString();
-                //檢查有沒有user在線上 有的話登出 (一次只能一個人登入firebase)
-                currentUser = authControl.getCurrentUser();
-                if (currentUser != null) {
-                    authControl.signOut();
-                }
-                //登入firebase 參數帶入帳號密碼
-                authControl.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() { //設立登入完成的監聽器
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d(TAG, "login ok");
-                                    FirebaseUser user = authControl.getCurrentUser();
-                                    DisplayUser(user);
-                                } else {
-                                    Log.d(TAG, "login fail");
-                                    Toast.makeText(getActivity(), "LoginFail", Toast.LENGTH_SHORT).show();
+                if (email.length() == 0 || password.length() == 0) {
+                    Toast.makeText(getActivity(), "請輸入帳號密碼", Toast.LENGTH_SHORT).show();
+                } else {
+                    //檢查有沒有user在線上 有的話登出 (一次只能一個人登入firebase)
+                    currentUser = authControl.getCurrentUser();
+                    if (currentUser != null) {
+                        authControl.signOut();
+                    }
+                    //登入firebase 參數帶入帳號密碼
+                    authControl.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() { //設立登入完成的監聽器
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d(TAG, "login ok");
+                                        Toast.makeText(getActivity(), "登入成功", Toast.LENGTH_SHORT).show();
+                                        FirebaseUser user = authControl.getCurrentUser();
+                                        DisplayUser(user);
+                                        Intent intent = new Intent(requireActivity(), ProductActivity.class);
+                                        requireActivity().startActivity(intent);
+                                    } else {
+                                        Log.d(TAG, "login fail");
+                                        Toast.makeText(getActivity(), "登入失敗", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
-
         return view;
     }
 
@@ -191,7 +198,6 @@ public class Fragment_logiin1 extends Fragment {
 
         mGoogleSignInClient = GoogleSignIn.getClient(getActivity(),gso);
 
-
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
         //RC_SIGN_IN是自定義的int常數 用來在onActivityResult()檢查是不是用Google的管道登入
@@ -217,7 +223,6 @@ public class Fragment_logiin1 extends Fragment {
             Log.d(TAG, "handleSignInResult: getDisplayName："+account.getDisplayName());
             Log.d(TAG, "handleSignInResult: getGivenName："+account.getGivenName());
             Log.d(TAG, "handleSignInResult: getFamilyName："+account.getFamilyName());
-
 
             Log.d(TAG, "handleSignInResult: getEmail:"+account.getEmail());
             Log.d(TAG, "handleSignInResult: getID:"+account.getId());
@@ -256,5 +261,4 @@ public class Fragment_logiin1 extends Fragment {
             Toast.makeText(getActivity(), "登入成功", Toast.LENGTH_SHORT).show();
         }
     }
-
 }

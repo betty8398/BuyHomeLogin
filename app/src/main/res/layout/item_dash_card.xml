@@ -25,7 +25,7 @@
                 android:id="@+id/productImage"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:background="?attr/colorPrimaryDark"
+                android:background="#474444"
                 android:scaleType="centerCrop" />
 
         </com.google.android.material.card.MaterialCardView>

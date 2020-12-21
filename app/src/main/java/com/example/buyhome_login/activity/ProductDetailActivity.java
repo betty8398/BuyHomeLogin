@@ -13,16 +13,19 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.buyhome_login.MainActivity_shopping_cart;
 import com.example.buyhome_login.R;
 import com.example.buyhome_login.adapter.ViewPagerAdapter;
 import com.example.buyhome_login.network.ProductEntry;
@@ -40,6 +43,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private RatingBar ratingBar;
     private LinearLayout goto_rating,goto_map;
     private Button add_to_car;
+    private ImageView image_love;
 
 
     @Override
@@ -76,6 +80,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         goto_rating=(LinearLayout)findViewById(R.id.goto_rating);
         goto_map=(LinearLayout)findViewById(R.id.goto_map);
         add_to_car=(Button)findViewById(R.id.add_rate);
+        image_love=(ImageView)findViewById(R.id.image_love);
     }
 
     private void setAdapter() {
@@ -92,7 +97,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         add_to_car.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ProductDetailActivity.this,null);
+                Intent intent=new Intent(ProductDetailActivity.this, MainActivity_shopping_cart.class);
                 intent.putExtra("id",product_id);
                 startActivity(intent);
             }
@@ -134,7 +139,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     intent.putExtra("describe",describe);
                     startActivity(intent);
                 }else{
-                    goto_rating.setBackgroundColor(Color.parseColor("#3403A9F4"));
+                    goto_rating.setBackgroundResource(R.drawable.frame_01);
                 }
                 return true;
             }
@@ -152,9 +157,16 @@ public class ProductDetailActivity extends AppCompatActivity {
 //                    }
 
                 }else{
-                    goto_map.setBackgroundColor(Color.parseColor("#3403A9F4"));
+                    goto_map.setBackgroundResource(R.drawable.frame_01);
                 }
                 return true;
+            }
+        });
+        image_love.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ProductDetailActivity.this,"喜歡不如買下來吧~",Toast.LENGTH_SHORT).show();
+                image_love.setImageResource(R.drawable.ic_love);
             }
         });
     }
@@ -183,7 +195,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.goto_car:
-
+                Intent intent=new Intent(ProductDetailActivity.this, MainActivity_shopping_cart.class);
+                startActivity(intent);
                 break;
             case R.id.share:
                 Intent shareIntent = new Intent();

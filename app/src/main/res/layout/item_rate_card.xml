@@ -29,7 +29,7 @@
                     android:id="@+id/productImage"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:background="?attr/colorPrimaryDark"
+                    android:background="@color/purple_200"
                     android:scaleType="centerCrop" />
 
             </com.google.android.material.card.MaterialCardView>

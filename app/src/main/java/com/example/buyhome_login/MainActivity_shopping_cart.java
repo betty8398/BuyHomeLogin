@@ -3,24 +3,27 @@ package com.example.buyhome_login;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 public class MainActivity_shopping_cart extends AppCompatActivity {
     Context context;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_shopping_cart);
         context = this;
-
+        toolbar = findViewById(R.id.app_bar);
         //創建ActionBar物件
-        ActionBar bar = getSupportActionBar();
-        //設定ActionBar顯示返回鍵
-        bar.setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar);
+        getSupportActionBar()
+                .setDisplayHomeAsUpEnabled(true);
     }
 
     //9-6.將 request 傳給 Fragment

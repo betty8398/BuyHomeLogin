@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,6 +67,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<com.example.buyhom
         private final TextView tv_price_data;
         private final TextView tv_item_amount;
         private final Button btnSub, btnAdd;
+        private final ImageButton btnDeleteItem;
 
         //取得項目視圖中的ViewID
         public ViewHolder(@NonNull final View itemView) {
@@ -73,8 +76,23 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<com.example.buyhom
             tv_name_data = itemView.findViewById(R.id.tv_item_name);
             tv_price_data = itemView.findViewById(R.id.tv_item_price);
             tv_item_amount = itemView.findViewById(R.id.tv_item_amount);
+            btnDeleteItem = itemView.findViewById(R.id.btn_delete_item);
             btnSub = itemView.findViewById(R.id.btn_sub);
             btnAdd = itemView.findViewById(R.id.btn_add);
+
+            //[按鈕] 刪除項目
+            btnDeleteItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION){
+                        Toast.makeText(context, viewModel.nameList.get(getAdapterPosition()) + "\n已刪除", Toast.LENGTH_SHORT).show();
+                        viewModel.deleteProduct(pos);
+                        notifyItemRemoved(pos);
+                        notifyItemRangeChanged(pos,viewModel.nameList.size());
+                    }
+                }
+            });
 
             //[按鈕] 數量減一
             btnSub.setOnClickListener(new View.OnClickListener() {
@@ -85,18 +103,19 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<com.example.buyhom
                     //計算總價
                     viewModel.setPureTotalPrice();
 
-                    //建立 LiveData 觀察者
-                    final Observer<List<Integer>> observer = new Observer<List<Integer>>() {
-                        @Override
-                        public void onChanged(@Nullable final List<Integer> newValue) {
-                            //若觀測到資料變化則做
-                            String newAmount = newValue.get(getAdapterPosition()).toString();
-                            tv_item_amount.setText(newAmount);
-                            Log.d("myTest", "Observer觀測到資料變化。");
-                        }
-                    };
-                    //連結 LiveData 與觀察者
-                    viewModel._amountList.observe((LifecycleOwner) context, observer);
+                    notifyItemChanged(getAdapterPosition());
+//                    //建立 LiveData 觀察者
+//                    final Observer<List<Integer>> observer = new Observer<List<Integer>>() {
+//                        @Override
+//                        public void onChanged(@Nullable final List<Integer> newValue) {
+//                            //若觀測到資料變化則做
+//                            String newAmount = newValue.get(getAdapterPosition()).toString();
+//                            tv_item_amount.setText(newAmount);
+//                            Log.d("myTest", "Observer觀測到資料變化。");
+//                        }
+//                    };
+//                    //連結 LiveData 與觀察者
+//                    viewModel._amountList.observe((LifecycleOwner) context, observer);
                 }
             });
 
@@ -109,18 +128,23 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<com.example.buyhom
                     //計算總價
                     viewModel.setPureTotalPrice();
 
-                    //建立 LiveData 觀察者
-                    final Observer<List<Integer>> observer = new Observer<List<Integer>>() {
-                        @Override
-                        public void onChanged(@Nullable final List<Integer> newValue) {
-                            //若觀測到資料變化則做
-                            String newAmount = newValue.get(getAdapterPosition()).toString();
-                            tv_item_amount.setText(newAmount);
-                            Log.d("myTest", "Observer觀測到資料變化。");
-                        }
-                    };
-                    //連結 LiveData 與觀察者
-                    viewModel._amountList.observe((LifecycleOwner) context, observer);
+                    notifyItemChanged(getAdapterPosition());
+//                    //建立 LiveData 觀察者
+//                    final Observer<List<Integer>> observer = new Observer<List<Integer>>() {
+//                        @Override
+//                        public void onChanged(@Nullable final List<Integer> newValue) {
+//                            //若觀測到資料變化則做
+//                            int pos = getAdapterPosition();
+//                            if (pos != RecyclerView.NO_POSITION) {
+//                                String newAmount = newValue.get(pos).toString();
+//                                tv_item_amount.setText(newAmount);
+//                                Toast.makeText(context,pos, Toast.LENGTH_SHORT).show();
+//                                Log.d("myTest", "Observer觀測到資料變化。");
+//                            }
+//                        }
+//                    };
+//                    //連結 LiveData 與觀察者
+//                    viewModel._amountList.observe((LifecycleOwner) context, observer);
                 }
             });
         }

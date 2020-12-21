@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment implements ProductCardRecyclerViewAda
     }
 
     private void findView() {
-        recyclerview_h=(RecyclerView)root.findViewById(R.id.recyclerview_h);
+        recyclerview_h=(RecyclerView)root.findViewById(R.id.recyclerview_fes);
         recyclerview_v=(RecyclerView)root.findViewById(R.id.recycler_view_v);
         recyclerview_buy=(RecyclerView)root.findViewById(R.id.recyclerView_buy);
         viewPager = (ViewPager) root.findViewById(R.id.main_viewpager);

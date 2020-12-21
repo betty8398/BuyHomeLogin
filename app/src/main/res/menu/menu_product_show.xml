@@ -9,8 +9,8 @@
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />
     <item
-        android:id="@+id/goto_car"
+        android:id="@+id/about"
         android:icon="@drawable/ic_cart"
-        android:title="Goto Car"
-        app:showAsAction="always" />
+        android:title="關於"
+        app:showAsAction="never" />
 </menu>

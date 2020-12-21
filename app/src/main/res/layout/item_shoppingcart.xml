@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="@+id/img_item_frame" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btn_delete_item"
         android:layout_width="24dp"
         android:layout_height="30dp"
         android:layout_marginTop="8dp"

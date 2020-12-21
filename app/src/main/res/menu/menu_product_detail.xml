@@ -16,6 +16,6 @@
     <item
         android:id="@+id/goto_car"
         android:icon="@drawable/ic_cart"
-        android:title="Goto Car"
+        android:title="Goto_Car"
         app:showAsAction="always" />
 </menu>

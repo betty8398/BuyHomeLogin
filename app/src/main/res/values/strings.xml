@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BuyHome</string>
     <string name="add_to_car">立馬加入購物車!!!加入購物車!!!</string>
-    <string name="slog">Buy家\n給你一個新家</string>
+    <string name="slog">Buy Home</string>
     <string name="title_activity_product">MainActivity</string>
     <string name="title_home">首頁</string>
     <string name="title_dashboard">分類</string>

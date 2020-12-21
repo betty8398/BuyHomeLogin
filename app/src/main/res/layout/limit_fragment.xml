@@ -7,164 +7,175 @@
     android:orientation="vertical"
     tools:context=".ui.notifications.spacial_ui.limit.LimitFragment">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="8dp"
-        android:orientation="horizontal">
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="35dp">
-
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/network1"
-                android:layout_width="160dp"
-                android:layout_height="160dp" />
-
-        </com.google.android.material.card.MaterialCardView>
-
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView10"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="時下最流行\n漁人歌手到你家"
-                android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceSubtitle2"
-                android:textSize="24dp" />
+                android:layout_height="200dp"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="原價:188K \n特價:0.8K"
-                android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textSize="24dp" />
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="35dp">
 
-            <com.example.buyhome_login.TimerTextView
-                android:id="@+id/timer1"
+                    <com.android.volley.toolbox.NetworkImageView
+                        android:id="@+id/network1"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="時下最流行\n漁人歌手到你家"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceSubtitle2"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="原價:188K \n特價:0.8K"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textSize="20dp" />
+
+                    <com.example.buyhome_login.TimerTextView
+                        android:id="@+id/timer1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/design_default_color_error"
+                        android:textSize="32dp"></com.example.buyhome_login.TimerTextView>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/design_default_color_error"
-                android:textSize="32dp"></com.example.buyhome_login.TimerTextView>
+                android:layout_height="200dp"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="35dp">
+
+                    <com.android.volley.toolbox.NetworkImageView
+                        android:id="@+id/network2"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="來自武漢的聖誕禮物"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceSubtitle2"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="原價:9999\n 限時免費"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textSize="20dp" />
+
+                    <com.example.buyhome_login.TimerTextView
+                        android:id="@+id/timer2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/design_default_color_error"
+                        android:textSize="32dp"></com.example.buyhome_login.TimerTextView>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="35dp">
+
+                    <com.android.volley.toolbox.NetworkImageView
+                        android:id="@+id/network3"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="免費OO圖庫"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceSubtitle2"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="原價:免費 \n特價:1224"
+                        android:textAlignment="center"
+                        android:textAppearance="?attr/textAppearanceBody2"
+                        android:textSize="20dp" />
+
+                    <com.example.buyhome_login.TimerTextView
+                        android:id="@+id/timer3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/design_default_color_error"
+                        android:textSize="32dp"></com.example.buyhome_login.TimerTextView>
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="8dp"
-        android:orientation="horizontal">
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="35dp">
-
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/network2"
-                android:layout_width="160dp"
-                android:layout_height="160dp" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="來自武漢的聖誕禮物"
-                android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceSubtitle2"
-                android:textSize="24dp" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="原價:9999\n 限時免費"
-                android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textSize="24dp" />
-
-            <com.example.buyhome_login.TimerTextView
-                android:id="@+id/timer2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/design_default_color_error"
-                android:textSize="32dp"></com.example.buyhome_login.TimerTextView>
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_margin="8dp"
-        android:orientation="horizontal">
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="35dp">
-
-            <com.android.volley.toolbox.NetworkImageView
-                android:id="@+id/network3"
-                android:layout_width="160dp"
-                android:layout_height="160dp" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="免費OO圖庫"
-                android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceSubtitle2"
-                android:textSize="24dp" />
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="原價:免費 \n特價:1224"
-                android:textAlignment="center"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textSize="24dp" />
-
-            <com.example.buyhome_login.TimerTextView
-                android:id="@+id/timer3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColor="@color/design_default_color_error"
-                android:textSize="32dp"></com.example.buyhome_login.TimerTextView>
-        </LinearLayout>
-
-
-    </LinearLayout>
 
 </LinearLayout>

@@ -65,21 +65,22 @@ public class ShoppingCartViewModel extends ViewModel {
         //[賦值]
         //TODO 串真資料
         //目前用假資料
-        _pureTotalPrice.setValue(0);
-        _discount.setValue(0);
-        _deliveryFee.setValue(60);
-        _totalPrice.setValue(_pureTotalPrice.getValue() - _discount.getValue() - _deliveryFee.getValue());
-        for(int i = 0 ; i < 12; i++){
+        for(int i = 0 ; i < 10; i++){
             String name = new String("ASUS X509MA-0291GN4020 星空灰 15.6吋窄邊筆電:" + (i + 1));
             nameList.add(name);
-            Integer price = new Integer(1001);
+            Integer price = new Integer(1 + i);
             priceList.add(price);
             pictureList.add(R.drawable.test_item);
             amountList.add(0);
             _amountList.setValue(amountList);
             checkedProduct.add(false);
-
         }
+
+        //計算價格相關
+        _pureTotalPrice.setValue(0);
+        _discount.setValue(0);
+        _deliveryFee.setValue(60);
+        _totalPrice.setValue(_pureTotalPrice.getValue() - _discount.getValue() - _deliveryFee.getValue());
 
         //收件相關
         receiverList.add("#李先生#0912345678");
@@ -91,8 +92,18 @@ public class ShoppingCartViewModel extends ViewModel {
         defaultReceiver = receiverList.get(0);
         defaultAddress = addressList.get(0);
         defaultStore = storeList.get(0);
+    }
 
-
+    /**
+     * 刪除指定商品
+     */
+    public void deleteProduct(int index){
+        nameList.remove(index);
+        priceList.remove(index);
+        pictureList.remove(index);
+        amountList.remove(index);
+        _amountList.setValue(amountList);
+        checkedProduct.remove(index);
     }
 
     /**

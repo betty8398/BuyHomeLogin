@@ -30,10 +30,18 @@
         android:id="@+id/navigation_cart"
         android:name="com.example.buyhome_login.ui.cart.CartFragment"
         android:label="@string/title_cart"
-        tools:layout="@layout/cart_fragment" />
+        tools:layout="@layout/cart_fragment" >
+        <action
+            android:id="@+id/action_navigation_cart_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_user"
         android:name="com.example.buyhome_login.ui.user.UserFragment"
         android:label="@string/title_user"
-        tools:layout="@layout/user_fragment" />
+        tools:layout="@layout/user_fragment" >
+        <action
+            android:id="@+id/action_navigation_user_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

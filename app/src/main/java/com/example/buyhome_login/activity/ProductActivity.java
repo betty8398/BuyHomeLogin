@@ -105,7 +105,7 @@ public class ProductActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.goto_car:
+            case R.id.about:
 
                 break;
         }
