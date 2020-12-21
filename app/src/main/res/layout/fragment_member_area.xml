@@ -20,7 +20,7 @@
         tools:layout_editor_absoluteY="188dp" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/img_user_photo"
+        android:id="@+id/cv_user_photo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="16dp"
@@ -32,8 +32,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/img_user_photo"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/account_photo_test" />
 
     </androidx.cardview.widget.CardView>
@@ -49,8 +51,8 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tv_account"
-        app:layout_constraintStart_toEndOf="@+id/img_user_photo"
-        app:layout_constraintTop_toTopOf="@+id/img_user_photo"
+        app:layout_constraintStart_toEndOf="@+id/cv_user_photo"
+        app:layout_constraintTop_toTopOf="@+id/cv_user_photo"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
@@ -59,7 +61,7 @@
         android:layout_height="wrap_content"
         android:text="@MyAccount"
         android:textColor="?android:attr/textColorSecondary"
-        app:layout_constraintBottom_toBottomOf="@+id/img_user_photo"
+        app:layout_constraintBottom_toBottomOf="@+id/cv_user_photo"
         app:layout_constraintStart_toStartOf="@+id/tv_nickname"
         app:layout_constraintTop_toBottomOf="@+id/tv_nickname" />
 
