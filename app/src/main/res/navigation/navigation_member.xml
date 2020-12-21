@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_member"
+    app:startDestination="@id/memberAreaFragment">
+    <fragment
+        android:id="@+id/memberAreaFragment"
+        android:name="com.example.buyhome_login.fragment_member_area.MemberAreaFragment"
+        android:label="fragment_member_area"
+        tools:layout="@layout/fragment_member_area" >
+        <action
+            android:id="@+id/action_memberAreaFragment_to_accountInfoFragment"
+            app:destination="@id/accountInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountInfoFragment"
+        android:name="com.example.buyhome_login.fragment_member_area.AccountInfoFragment"
+        android:label="fragment_account_info"
+        tools:layout="@layout/fragment_account_info" />
+</navigation>
