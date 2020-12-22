@@ -76,8 +76,8 @@ public class Fragment_logiin1 extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
-        updateUI(account);
+        account = GoogleSignIn.getLastSignedInAccount(getActivity());
+
 
     }
 
@@ -202,7 +202,14 @@ public class Fragment_logiin1 extends Fragment {
                                         Toast.makeText(getActivity(), "登入成功", Toast.LENGTH_SHORT).show();
                                         FirebaseUser user = authControl.getCurrentUser();
                                         DisplayUser(user);
-                                        Intent intent = new Intent(requireActivity(), ProductActivity.class);
+                                        //TODO:firebase
+                                        //設定回傳用的intent
+                                        Intent intent = new Intent(getActivity(),MemberAreaActivity.class);
+                                        //放入資料，引數一為key，引數二為value
+                                        intent.putExtra("userid", FUID);
+                                        intent.putExtra("useremail", Femail);
+                                        intent.putExtra("username", Fname);
+                                        //傳送資料到
                                         requireActivity().startActivity(intent);
                                     } else {
                                         Log.d(TAG, "login fail");
@@ -324,14 +331,7 @@ public class Fragment_logiin1 extends Fragment {
 
         } else if (account == null && authControl.getCurrentUser() != null) {
             Toast.makeText(getActivity(), "firebase 登入成功", Toast.LENGTH_SHORT).show();
-            //設定回傳用的intent
-            Intent intent = new Intent(getActivity(),MemberAreaActivity.class);
-            //放入資料，引數一為key，引數二為value
-            intent.putExtra("userid", FUID);
-            intent.putExtra("useremail", Femail);
-            intent.putExtra("username", Fname);
-            //傳送資料到
-            requireActivity().startActivity(intent);
+
 
         } else {
             Toast.makeText(getActivity(), "google 和 firebase 都登入成功", Toast.LENGTH_SHORT).show();
