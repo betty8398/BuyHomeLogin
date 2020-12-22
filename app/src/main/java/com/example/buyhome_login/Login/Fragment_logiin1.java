@@ -206,19 +206,6 @@ public class Fragment_logiin1 extends Fragment {
                                         FUID = user.getUid();
                                         Log.d(TAG, "firebase user name = "+ FUID);
                                         FURI = "https://lh3.googleusercontent.com/a-/AOh14GjGp02JIlI42UYlBGh-D_NPsJYeN7pROOrmJpoNkw";
-
-                                        //TODO:firebase
-                                        //設定回傳用的intent
-                                        Intent intent = new Intent(getActivity(),MemberAreaActivity.class);
-                                        //放入資料，引數一為key，引數二為value
-                                        intent.putExtra("userid", FUID);
-                                        intent.putExtra("useremail", Femail);
-                                        intent.putExtra("username", Fname);
-                                        intent.putExtra("userphotourl",FURI);
-
-                                        Log.d("myTest", "FURI: " + FURI);
-                                        //傳送資料到
-                                        requireActivity().startActivity(intent);
                                     } else {
                                         Log.d(TAG, "login fail");
                                         Toast.makeText(getActivity(), "登入失敗", Toast.LENGTH_SHORT).show();
@@ -316,30 +303,11 @@ public class Fragment_logiin1 extends Fragment {
 
     private void updateUI(GoogleSignInAccount account) {
         //TODO:傳遞user資料到 MemberAreaActivity
-        if (account == null && authControl.getCurrentUser() == null) {//如果抓取不到使用者最近登入 物件 則跳轉到登入畫面
-            Toast.makeText(getActivity(), "google 和 firebase 尚未當入", Toast.LENGTH_SHORT).show();
+        if (account == null && authControl.getCurrentUser() == null) {
+            Toast.makeText(getActivity(), "尚未當入", Toast.LENGTH_SHORT).show();
 
         } else if (account != null && authControl.getCurrentUser() == null) {
             Toast.makeText(getActivity(), "google 登入成功", Toast.LENGTH_SHORT).show();
-
-            //設定回傳用的intent
-            Intent intent = new Intent(getActivity(),MemberAreaActivity.class);
-            //放入資料，引數一為key，引數二為value
-            intent.putExtra("userid", userid);
-            intent.putExtra("useremail", useremail);
-            intent.putExtra("username", username);
-            intent.putExtra("userphotourl", userphotourl.toString());
-
-            Log.d("myTest", "(send account)useremail: " + useremail);
-            Log.d("myTest", "(send account)username: " + username);
-
-            //傳送資料到
-            requireActivity().startActivity(intent);
-
-        } else if (account == null && authControl.getCurrentUser() != null) {
-            Toast.makeText(getActivity(), "firebase 登入成功", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getActivity(), "google 和 firebase 都登入成功", Toast.LENGTH_SHORT).show();
         }
     }
 }
