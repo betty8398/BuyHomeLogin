@@ -19,8 +19,11 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.NetworkImageView;
+import com.example.buyhome_login.MemberAreaActivity;
 import com.example.buyhome_login.R;
 import com.example.buyhome_login.data.MemberAreaViewModel;
+import com.example.buyhome_login.network.ImageRequester;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +36,7 @@ public class MemberAreaFragment extends Fragment {
     Context context;
     ListView lvAccountArea;
 
-    ImageView imgUserPhoto;
+    NetworkImageView imgUserPhoto;
 
     TextView tvNickname, tvAccount;
 
@@ -57,6 +60,8 @@ public class MemberAreaFragment extends Fragment {
             R.drawable.arrow_right, R.drawable.arrow_right,
             R.drawable.arrow_right, R.drawable.arrow_right,
             null, null};
+    private ImageRequester mImageRequester;
+    private MemberAreaActivity memberAreaActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,10 +74,14 @@ public class MemberAreaFragment extends Fragment {
         //取得自定義 ViewModel
         viewModel = new ViewModelProvider(requireActivity()).get(MemberAreaViewModel.class);
 
+        mImageRequester= ImageRequester.getInstance(context);
+        memberAreaActivity=(MemberAreaActivity)getActivity();
+
         imgUserPhoto = view.findViewById(R.id.img_user_photo);
         if(viewModel.getHasPhoto()){
             imgUserPhoto.setImageBitmap(viewModel.getUserPhotoBitmap());
         }
+        mImageRequester.setImageFromUrl(imgUserPhoto,memberAreaActivity.userphotourl);
 
         tvNickname = view.findViewById(R.id.tv_nickname);
         tvNickname.setText(viewModel.getNickname());
@@ -144,7 +153,7 @@ public class MemberAreaFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                requireActivity().finish();
+                requireActivity().onBackPressed();
                 break;
         }
         return super.onOptionsItemSelected(item);
