@@ -206,6 +206,8 @@ public class Fragment_logiin1 extends Fragment {
                                         FUID = user.getUid();
                                         Log.d(TAG, "firebase user name = "+ FUID);
                                         FURI = "https://lh3.googleusercontent.com/a-/AOh14GjGp02JIlI42UYlBGh-D_NPsJYeN7pROOrmJpoNkw";
+                                        Intent intent = new Intent(getActivity(),MemberAreaActivity.class);
+                                        startActivity(intent);
                                     } else {
                                         Log.d(TAG, "login fail");
                                         Toast.makeText(getActivity(), "登入失敗", Toast.LENGTH_SHORT).show();
@@ -308,6 +310,8 @@ public class Fragment_logiin1 extends Fragment {
 
         } else if (account != null && authControl.getCurrentUser() == null) {
             Toast.makeText(getActivity(), "google 登入成功", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(),MemberAreaActivity.class);
+            startActivity(intent);
         }
     }
 }
