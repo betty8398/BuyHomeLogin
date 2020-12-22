@@ -43,6 +43,8 @@ public class CheckDeal extends Fragment {
     TextView tvDiscountCodeTip, tvPurePriceDisplay, tvDiscountDisplay, tvDeliveryFeeDisplay, tvTotalDisplay, tvDeliveryDisplay;
     Button btnGoDoPay;
 
+    final String coupon = "xmas";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -177,7 +179,7 @@ public class CheckDeal extends Fragment {
             tvDiscountCodeTip.setVisibility(View.VISIBLE);
 
             //依折扣碼對錯選擇相應圖示
-            if(editable.toString().equals("1234")){
+            if(editable.toString().equals(coupon)){
                 tvDiscountCodeTip.setText("OK");
                 tvDiscountCodeTip.setBackgroundResource(R.drawable.frame_03);
                 etDiscountCode.setBackground(getResources().getDrawable(R.drawable.frame_greenline));
