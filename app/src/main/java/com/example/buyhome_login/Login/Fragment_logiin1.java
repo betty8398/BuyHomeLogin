@@ -215,6 +215,8 @@ public class Fragment_logiin1 extends Fragment {
                                         intent.putExtra("useremail", Femail);
                                         intent.putExtra("username", Fname);
                                         intent.putExtra("userphotourl",FURI);
+
+                                        Log.d("myTest", "FURI: " + FURI);
                                         //傳送資料到
                                         requireActivity().startActivity(intent);
                                     } else {
