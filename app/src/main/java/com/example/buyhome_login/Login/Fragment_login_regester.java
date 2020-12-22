@@ -1,6 +1,7 @@
 package com.example.buyhome_login.Login;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -21,6 +22,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.buyhome_login.MemberAreaActivity;
 import com.example.buyhome_login.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -161,6 +163,8 @@ public class Fragment_login_regester extends Fragment {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Log.d(TAG, "更新firebase json會員資料 成功");
+                                            Intent intent = new Intent(getActivity(), MemberAreaActivity.class);
+                                            startActivity(intent);
                                         }
                                     });
 
