@@ -4,26 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.buyhome_login.data.MemberAreaViewModel;
-import com.example.buyhome_login.fragment_member_area.MemberAreaFragment;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -32,6 +31,12 @@ public class MemberAreaActivity extends AppCompatActivity {
 
     //ViewModel
     private MemberAreaViewModel viewModel;
+    private DatabaseReference classDB;
+    private FirebaseDatabase fbControl;
+    private GoogleSignInAccount account;
+    private FirebaseAuth authControl;
+    private FirebaseUser user;
+    private String userid,useremail,username,userphotourl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +49,29 @@ public class MemberAreaActivity extends AppCompatActivity {
 
         Log.d("myTest", "MemberAreaActivity ");
 
-        //接收意圖
-        Intent intent = getIntent();
-        //透過key值取得字串資料
-        String userid = intent.getStringExtra("userid");
-        String useremail = intent.getStringExtra("useremail");
-        String username = intent.getStringExtra("username");
-        String userphotourl = intent.getStringExtra("userphotourl");
+
+
+        //google 登入實體 (最近登入用戶)
+        account = GoogleSignIn.getLastSignedInAccount(this);
+        if(account!=null){
+            //google 會員資料取
+            userid = account.getId();
+            useremail = account.getEmail();
+            username = account.getDisplayName();
+            userphotourl = account.getPhotoUrl().toString();
+        }
+
+        //FirebaseAuth 實體
+        authControl = FirebaseAuth.getInstance();
+        user = authControl.getCurrentUser();//(最近登入用戶)
+        if(user!=null){
+            userid = user.getUid();
+            useremail = user.getEmail();
+            username = user.getDisplayName();
+            userphotourl = "https://lh3.googleusercontent.com/a-/AOh14GjGp02JIlI42UYlBGh-D_NPsJYeN7pROOrmJpoNkw";
+
+        }
+
 
         Log.d("myTest", "userphotourl: " + userphotourl);
 
