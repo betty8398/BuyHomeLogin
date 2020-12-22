@@ -7,11 +7,15 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.buyhome_login.activity.ProductDetailActivity;
 import com.example.buyhome_login.data.MemberAreaViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -36,7 +40,8 @@ public class MemberAreaActivity extends AppCompatActivity {
     private GoogleSignInAccount account;
     private FirebaseAuth authControl;
     private FirebaseUser user;
-    private String userid,useremail,username,userphotourl;
+    public String userid,useremail,username,userphotourl;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +94,10 @@ public class MemberAreaActivity extends AppCompatActivity {
 //        ActionBar bar = getSupportActionBar();
 //        //設定ActionBar顯示返回鍵
 //        bar.setDisplayHomeAsUpEnabled(true);
+        toolbar=(Toolbar)findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar()
+                .setDisplayHomeAsUpEnabled(true);
     }
 
     //取得網路圖片的執行緒
@@ -170,5 +179,15 @@ public class MemberAreaActivity extends AppCompatActivity {
         for (Fragment fragment : getSupportFragmentManager().getPrimaryNavigationFragment().getChildFragmentManager().getFragments()) {
             fragment.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
