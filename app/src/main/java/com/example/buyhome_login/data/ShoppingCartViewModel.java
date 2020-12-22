@@ -1,11 +1,7 @@
 package com.example.buyhome_login.data;
 
-import android.graphics.drawable.Drawable;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
-import com.example.buyhome_login.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +9,12 @@ import java.util.List;
 public class ShoppingCartViewModel extends ViewModel {
     //TODO 封裝變數
     //商品相關
-    public List<String> nameList;
-    public List<Integer> priceList;
-    public List<Integer> pictureList;
-    public List<Integer> amountList;
-    public MutableLiveData<List<Integer>> _amountList;
-    public List<Boolean> checkedProduct;
+    public static List<String> nameList;
+    public static List<Integer> priceList;
+    public static List<String> pictureList;
+    public static List<Integer> amountList;
+    public static MutableLiveData<List<Integer>> _amountList;
+    public static List<Boolean> checkedProduct;
     //計算價格相關
     public MutableLiveData<Integer> _pureTotalPrice;
     public MutableLiveData<Integer> _discount;
@@ -45,12 +41,24 @@ public class ShoppingCartViewModel extends ViewModel {
         super();
         //[配置記憶體]
         //商品相關
-        nameList = new ArrayList<String>();
-        priceList = new ArrayList<Integer>();
-        pictureList = new ArrayList<Integer>();
-        amountList = new ArrayList<Integer>();
-        _amountList = new MutableLiveData<List<Integer>>();
-        checkedProduct = new ArrayList<Boolean>();
+        if(nameList==null){
+            nameList = new ArrayList<String>();
+        }
+        if(priceList==null){
+            priceList = new ArrayList<Integer>();
+        }
+        if(pictureList==null){
+            pictureList = new ArrayList<String>();
+        }
+        if(amountList==null){
+            amountList = new ArrayList<Integer>();
+        }
+        if(_amountList==null){
+            _amountList = new MutableLiveData<List<Integer>>();
+        }
+        if(checkedProduct==null){
+            checkedProduct = new ArrayList<Boolean>();
+        }
         defaultReceiver = "";
         defaultAddress = "";
         defaultStore = "";
@@ -67,12 +75,12 @@ public class ShoppingCartViewModel extends ViewModel {
         //[賦值]
         //TODO 串真資料
         //目前用假資料
-        for(int i = 0 ; i <7; i++){
-            addProduct(
-                    "ASUS X509MA-0291GN4020 星空灰 15.6吋窄邊筆電:" + (i + 1),
-                    1 + i,
-                    R.drawable.test_item);
-        }
+//        for(int i = 0 ; i <7; i++){
+//            addProduct(
+//                    "ASUS X509MA-0291GN4020 星空灰 15.6吋窄邊筆電:" + (i + 1),
+//                    1 + i,
+//                    R.drawable.test_item);
+//        }
 
         //計算價格相關
         _pureTotalPrice.setValue(0);
@@ -95,10 +103,10 @@ public class ShoppingCartViewModel extends ViewModel {
     /**
      * 增加一個商品
      */
-    public void addProduct(String name, Integer price, Integer picture){
+    public void addProduct(String name, Integer price, String picture){
         nameList.add(name);
         priceList.add(price);
-        pictureList.add(R.drawable.test_item);
+        pictureList.add(picture);
         amountList.add(0);
         _amountList.setValue(amountList);
         checkedProduct.add(false);
@@ -218,8 +226,8 @@ public class ShoppingCartViewModel extends ViewModel {
     /**
      * 取得要結帳的商品圖片清單
      */
-    public List<Integer> getCheckedPictureList(){
-        List<Integer> tempList = new ArrayList<Integer>();
+    public List<String> getCheckedPictureList(){
+        List<String> tempList = new ArrayList<>();
         for(int i = 0 ; i < pictureList.size() ; i++){
             if(checkedProduct.get(i)){
                 tempList.add(pictureList.get(i));

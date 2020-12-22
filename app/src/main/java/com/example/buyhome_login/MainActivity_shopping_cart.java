@@ -9,10 +9,21 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
+
+import com.example.buyhome_login.data.ShoppingCartViewModel;
+import com.example.buyhome_login.network.ProductEntry;
+
+import java.util.List;
 
 public class MainActivity_shopping_cart extends AppCompatActivity {
     Context context;
     private Toolbar toolbar;
+    private long product_id;
+    private List<ProductEntry> productList;
+    private ProductEntry target_product;
+    private ShoppingCartViewModel shoppingCartViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +35,26 @@ public class MainActivity_shopping_cart extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar()
                 .setDisplayHomeAsUpEnabled(true);
+        getData();
+        setData();
+    }
+
+    private void setData() {
+        shoppingCartViewModel=new ViewModelProvider((ViewModelStoreOwner) context).get(ShoppingCartViewModel.class);
+        if(target_product!=null){
+            shoppingCartViewModel.addProduct(target_product.title,Integer.valueOf(target_product.price.split("[$]")[1]),target_product.url);
+        }
+    }
+
+    private void getData() {
+        Intent intent=getIntent();
+        product_id=intent.getLongExtra("id",0);
+        productList= ProductEntry.initProductEntryList(getResources());
+        for(ProductEntry productEntry:productList){
+            if(productEntry.id==product_id){
+                target_product=productEntry;
+            }
+        }
     }
 
     //9-6.將 request 傳給 Fragment

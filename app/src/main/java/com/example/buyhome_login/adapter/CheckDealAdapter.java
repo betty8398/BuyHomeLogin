@@ -11,7 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.toolbox.NetworkImageView;
 import com.example.buyhome_login.R;
+import com.example.buyhome_login.network.ImageRequester;
 
 import java.util.List;
 
@@ -20,14 +22,15 @@ public class CheckDealAdapter extends RecyclerView.Adapter<com.example.buyhome_l
 
     private final List<String> nameString;
     private final List<Integer> priceList;
-    private final List<Integer> pictureId;
+    private final List<String> pictureId;
     private final List<Integer> amount;
 
     private final LayoutInflater mLayoutInflater;
+    private final ImageRequester mImageRequester;
 
     //4-1.建構子
     //取得context與資料，並設定一個Inflater填充於傳來的context中
-    public CheckDealAdapter(Context context, List<String> nameString, List<Integer> priceList, List<Integer> pictureId, List<Integer> amount) {
+    public CheckDealAdapter(Context context, List<String> nameString, List<Integer> priceList, List<String> pictureId, List<Integer> amount) {
         this.context = context;
 
         this.nameString = nameString;
@@ -35,6 +38,7 @@ public class CheckDealAdapter extends RecyclerView.Adapter<com.example.buyhome_l
         this.pictureId = pictureId;
         this.amount = amount;
 
+        mImageRequester= ImageRequester.getInstance(context);
         mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -47,7 +51,7 @@ public class CheckDealAdapter extends RecyclerView.Adapter<com.example.buyhome_l
 
     //4-3.建立ViewHolder內部類別，必須繼承RecyclerView.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView img_data;
+        private final NetworkImageView img_data;
         private final TextView tv_name_data;
         private final TextView tv_price_data;
         private final TextView tv_item_amount;
@@ -87,7 +91,7 @@ public class CheckDealAdapter extends RecyclerView.Adapter<com.example.buyhome_l
     @Override
     public void onBindViewHolder(@NonNull com.example.buyhome_login.adapter.CheckDealAdapter.ViewHolder holder, int position) {
         //TODO
-        holder.img_data.setImageResource(pictureId.get(position));
+        mImageRequester.setImageFromUrl(holder.img_data,pictureId.get(position));
         holder.tv_name_data.setText(nameString.get(position));
         holder.tv_price_data.setText("$" + priceList.get(position));
         holder.tv_item_amount.setText("數量：" + amount.get(position).toString());
