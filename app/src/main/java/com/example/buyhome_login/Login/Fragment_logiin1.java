@@ -63,7 +63,7 @@ public class Fragment_logiin1 extends Fragment {
     private Uri userphotourl;
     //建立回傳端編號常數
     private final int RETURN_DATA = 10;
-    private String Fname,Femail,FUID;
+    private String Fname,Femail,FUID,FURI;
     private int index;
     private DatabaseReference classDB;
     private FirebaseDatabase fbControl;
@@ -77,8 +77,6 @@ public class Fragment_logiin1 extends Fragment {
     public void onStart() {
         super.onStart();
         account = GoogleSignIn.getLastSignedInAccount(getActivity());
-
-
     }
 
     @Override
@@ -201,7 +199,14 @@ public class Fragment_logiin1 extends Fragment {
                                         Log.d(TAG, "login ok");
                                         Toast.makeText(getActivity(), "登入成功", Toast.LENGTH_SHORT).show();
                                         FirebaseUser user = authControl.getCurrentUser();
-                                        DisplayUser(user);
+                                        Fname = user.getDisplayName();
+                                        Log.d(TAG, "firebase user name = "+ Fname);
+                                        Femail = user.getEmail();
+                                        Log.d(TAG, "firebase user name = "+ Femail);
+                                        FUID = user.getUid();
+                                        Log.d(TAG, "firebase user name = "+ FUID);
+                                        FURI = "https://lh3.googleusercontent.com/a-/AOh14GjGp02JIlI42UYlBGh-D_NPsJYeN7pROOrmJpoNkw";
+
                                         //TODO:firebase
                                         //設定回傳用的intent
                                         Intent intent = new Intent(getActivity(),MemberAreaActivity.class);
@@ -209,6 +214,7 @@ public class Fragment_logiin1 extends Fragment {
                                         intent.putExtra("userid", FUID);
                                         intent.putExtra("useremail", Femail);
                                         intent.putExtra("username", Fname);
+                                        intent.putExtra("userphotourl",FURI);
                                         //傳送資料到
                                         requireActivity().startActivity(intent);
                                     } else {
@@ -303,12 +309,7 @@ public class Fragment_logiin1 extends Fragment {
             updateUI(null);
         }
     }
-    private void DisplayUser(FirebaseUser user) {
-         Fname = user.getDisplayName();
-         Femail = user.getEmail();
-         FUID = user.getUid();
 
-    }
 
 
     private void updateUI(GoogleSignInAccount account) {
@@ -331,8 +332,6 @@ public class Fragment_logiin1 extends Fragment {
 
         } else if (account == null && authControl.getCurrentUser() != null) {
             Toast.makeText(getActivity(), "firebase 登入成功", Toast.LENGTH_SHORT).show();
-
-
         } else {
             Toast.makeText(getActivity(), "google 和 firebase 都登入成功", Toast.LENGTH_SHORT).show();
         }
