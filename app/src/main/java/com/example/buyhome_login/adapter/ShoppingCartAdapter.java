@@ -19,27 +19,31 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.example.buyhome_login.R;
 import com.example.buyhome_login.data.ShoppingCartViewModel;
+import com.example.buyhome_login.network.ImageRequester;
 
 import java.util.List;
 
 public class ShoppingCartAdapter extends RecyclerView.Adapter<com.example.buyhome_login.adapter.ShoppingCartAdapter.ViewHolder> {
     private final Context context;
+    private final ImageRequester mImageRequester;
 
     //ViewModel
     private ShoppingCartViewModel viewModel;
 
     private final List<String> nameString;
     private final List<Integer> priceList;
-    private final List<Integer> pictureId;
+    private final List<String> pictureId;
     private final List<Integer> amount;
 
     private final LayoutInflater mLayoutInflater;
 
     //建構子
     //取得context與資料，並設定一個Inflater填充於傳來的context中
-    public ShoppingCartAdapter(Context context, List<String> nameString, List<Integer> priceList, List<Integer> pictureId, List<Integer> amount) {
+    public ShoppingCartAdapter(Context context, List<String> nameString, List<Integer> priceList, List<String> pictureId, List<Integer> amount) {
         this.context = context;
 
         //取得自定義 ViewModel
@@ -49,7 +53,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<com.example.buyhom
         this.priceList = priceList;
         this.pictureId = pictureId;
         this.amount = amount;
-
+        mImageRequester=ImageRequester.getInstance(context);
         mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -62,7 +66,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<com.example.buyhom
 
     //建立ViewHolder內部類別
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView img_data;
+        private final NetworkImageView img_data;
         private final TextView tv_name_data;
         private final TextView tv_price_data;
         private final TextView tv_item_amount;
@@ -166,7 +170,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<com.example.buyhom
     //將資料連接到ViewHolder
     @Override
     public void onBindViewHolder(@NonNull com.example.buyhome_login.adapter.ShoppingCartAdapter.ViewHolder holder, int position) {
-        holder.img_data.setImageResource(pictureId.get(position));
+        mImageRequester.setImageFromUrl(holder.img_data,pictureId.get(position));
         holder.tv_name_data.setText(nameString.get(position));
         holder.tv_price_data.setText("$" + priceList.get(position));
         holder.tv_item_amount.setText(amount.get(position).toString());

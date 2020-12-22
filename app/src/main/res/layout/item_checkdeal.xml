@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/frame_01" />
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/img_item_picture"
         android:layout_width="72dp"
         android:layout_height="72dp"
