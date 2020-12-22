@@ -342,7 +342,4 @@ public class Fragment_logiin1 extends Fragment {
             Toast.makeText(getActivity(), "google 和 firebase 都登入成功", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
 }
