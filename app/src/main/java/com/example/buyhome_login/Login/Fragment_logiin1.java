@@ -326,7 +326,11 @@ public class Fragment_logiin1 extends Fragment {
             intent.putExtra("userid", userid);
             intent.putExtra("useremail", useremail);
             intent.putExtra("username", username);
-            intent.putExtra("userphotourl", userphotourl);
+            intent.putExtra("userphotourl", userphotourl.toString());
+
+            Log.d("myTest", "(send account)useremail: " + useremail);
+            Log.d("myTest", "(send account)username: " + username);
+
             //傳送資料到
             requireActivity().startActivity(intent);
 
