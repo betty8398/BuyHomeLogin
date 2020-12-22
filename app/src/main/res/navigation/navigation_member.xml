@@ -12,10 +12,32 @@
         <action
             android:id="@+id/action_memberAreaFragment_to_accountInfoFragment"
             app:destination="@id/accountInfoFragment" />
+        <action
+            android:id="@+id/action_memberAreaFragment_to_setAddressFragment"
+            app:destination="@id/setAddressFragment" />
+        <action
+            android:id="@+id/action_memberAreaFragment_to_setStoreFragment"
+            app:destination="@id/setStoreFragment" />
+        <action
+            android:id="@+id/action_memberAreaFragment_to_setPayMethodFragment"
+            app:destination="@id/setPayMethodFragment" />
     </fragment>
     <fragment
         android:id="@+id/accountInfoFragment"
         android:name="com.example.buyhome_login.fragment_member_area.AccountInfoFragment"
         android:label="fragment_account_info"
         tools:layout="@layout/fragment_account_info" />
+    <fragment
+        android:id="@+id/setStoreFragment"
+        android:name="com.example.buyhome_login.fragment_member_area.SetStoreFragment"
+        android:label="SetStoreFragment" />
+    <fragment
+        android:id="@+id/setPayMethodFragment"
+        android:name="com.example.buyhome_login.fragment_member_area.SetPayMethodFragment"
+        android:label="SetPayMethodFragment" />
+    <fragment
+        android:id="@+id/setAddressFragment"
+        android:name="com.example.buyhome_login.fragment_member_area.SetAddressFragment"
+        android:label="fragment_set_address"
+        tools:layout="@layout/fragment_set_address" />
 </navigation>
