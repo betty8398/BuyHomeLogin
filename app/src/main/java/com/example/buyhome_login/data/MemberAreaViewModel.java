@@ -45,41 +45,56 @@ public class MemberAreaViewModel extends ViewModel {
         birthday = "";
         phone = "";
 
-        initMemberInfo();
-        initUserBasicInfo();
-        initUserInfo();
+        //TODO 假資料要換真資料
+        initMemberInfo(
+                "台北市信義區\n信義路五段7號89樓",
+                "全家 楊梅幼獅店",
+                "宅配");
+
+        initUserBasicInfo(
+                false,
+                "Mr. Hello World",
+                "myaccount@gmail.com");
+
+        initUserInfo(
+                "123123",
+                GENDER_FEMALE,
+                "20201212",
+                "0911222333");
     }
 
-    //TODO 假資料要換真資料
+    private void initWithHardcode(){
+
+    }
+
     /**
      * 初始化帳號資訊
      */
-    private void initMemberInfo(){
-        address = "台北市信義區\n信義路五段7號89樓";
-        store = "全家 楊梅幼獅店";
-        payMethod = "宅配";
+    private void initMemberInfo(String address, String store, String payMethod ){
+        this.address = address;
+        this.store = store;
+        this.payMethod = payMethod;
     }
 
-    //TODO 假資料要換真資料
     /**
      * 初始化頭像、暱稱、信箱
      */
-    private void initUserBasicInfo(){
-        hasPhoto = false;
-        nickname = "Mr. Hello World";
-        email = "myaccount@gmail.com";
+    private void initUserBasicInfo(Boolean hasPhoto, String nickname, String email){
+        this.hasPhoto = hasPhoto;
+        this.nickname = nickname;
+        this.email = email;
     }
 
-    //TODO 假資料要換真資料
     /**
      * 初始化基本資訊
      */
-    private void initUserInfo(){
-        password = "123123";
-        gender = GENDER_FEMALE;
-        birthday = "20201212";
-        phone = "0911222333";
+    private void initUserInfo(String password, int gender, String birthday, String phone){
+        this.password = password;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.phone = phone;
     }
+
 
     public Bitmap getUserPhotoBitmap() {
         return userPhotoBitmap;

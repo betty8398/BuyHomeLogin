@@ -102,7 +102,7 @@ public class MemberAreaFragment extends Fragment {
         lvAccountArea = view.findViewById(R.id.lv_account_area);
         SimpleAdapter adapter = new SimpleAdapter(
                 context, itemList,
-                R.layout.item_amemberarea,
+                R.layout.item_memberarea,
                 new String[]{"img", "info", "showInfo", "showNextSign"},
                 new int[]{R.id.img_info, R.id.tv_info, R.id.tv_show_info, R.id.img_next_sign});
 
@@ -121,10 +121,13 @@ public class MemberAreaFragment extends Fragment {
                         Navigation.findNavController(view).navigate(R.id.action_memberAreaFragment_to_accountInfoFragment);
                         break;
                     case 1:
+                        Navigation.findNavController(view).navigate(R.id.action_memberAreaFragment_to_setAddressFragment);
                         break;
                     case 2:
+                        Navigation.findNavController(view).navigate(R.id.action_memberAreaFragment_to_setStoreFragment);
                         break;
                     case 3:
+                        Navigation.findNavController(view).navigate(R.id.action_memberAreaFragment_to_setPayMethodFragment);
                         break;
                     case 4:
                         break;
