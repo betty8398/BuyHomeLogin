@@ -1,5 +1,7 @@
 package com.example.buyhome_login.data;
 
+import android.graphics.drawable.Drawable;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -65,15 +67,11 @@ public class ShoppingCartViewModel extends ViewModel {
         //[賦值]
         //TODO 串真資料
         //目前用假資料
-        for(int i = 0 ; i < 10; i++){
-            String name = new String("ASUS X509MA-0291GN4020 星空灰 15.6吋窄邊筆電:" + (i + 1));
-            nameList.add(name);
-            Integer price = new Integer(1 + i);
-            priceList.add(price);
-            pictureList.add(R.drawable.test_item);
-            amountList.add(0);
-            _amountList.setValue(amountList);
-            checkedProduct.add(false);
+        for(int i = 0 ; i <7; i++){
+            addProduct(
+                    "ASUS X509MA-0291GN4020 星空灰 15.6吋窄邊筆電:" + (i + 1),
+                    1 + i,
+                    R.drawable.test_item);
         }
 
         //計算價格相關
@@ -92,6 +90,18 @@ public class ShoppingCartViewModel extends ViewModel {
         defaultReceiver = receiverList.get(0);
         defaultAddress = addressList.get(0);
         defaultStore = storeList.get(0);
+    }
+
+    /**
+     * 增加一個商品
+     */
+    public void addProduct(String name, Integer price, Integer picture){
+        nameList.add(name);
+        priceList.add(price);
+        pictureList.add(R.drawable.test_item);
+        amountList.add(0);
+        _amountList.setValue(amountList);
+        checkedProduct.add(false);
     }
 
     /**
