@@ -36,7 +36,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/account_photo_test" />
+            tools:srcCompat="@drawable/account_photo_test" />
 
     </androidx.cardview.widget.CardView>
 
