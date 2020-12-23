@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -27,6 +28,14 @@ import com.example.buyhome_login.MemberAreaActivity;
 import com.example.buyhome_login.R;
 import com.example.buyhome_login.data.MemberAreaViewModel;
 import com.example.buyhome_login.network.ImageRequester;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,6 +75,7 @@ public class MemberAreaFragment extends Fragment {
     private ImageRequester mImageRequester;
     private MemberAreaActivity memberAreaActivity;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -73,6 +83,7 @@ public class MemberAreaFragment extends Fragment {
         context = requireActivity();
 
         setHasOptionsMenu(true);
+
 
         //取得自定義 ViewModel
         viewModel = new ViewModelProvider(requireActivity()).get(MemberAreaViewModel.class);
@@ -154,8 +165,11 @@ public class MemberAreaFragment extends Fragment {
             }
         });
 
+
+
         return view;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
