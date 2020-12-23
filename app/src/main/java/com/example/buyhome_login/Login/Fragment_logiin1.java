@@ -265,7 +265,11 @@ public class Fragment_logiin1 extends Fragment {
             username = account.getDisplayName();
             useremail=account.getEmail();
             userid=account.getId();
-            userphotourl=account.getPhotoUrl();
+            try {
+                userphotourl=account.getPhotoUrl();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             //手動新增Google資料庫會員資料
             Map<String, Object> data = new HashMap<String, Object>();
@@ -312,6 +316,7 @@ public class Fragment_logiin1 extends Fragment {
             Toast.makeText(getActivity(), "google 登入成功", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getActivity(),MemberAreaActivity.class);
             startActivity(intent);
+            getActivity().finish();
         }
     }
 }

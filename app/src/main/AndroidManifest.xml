@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.buyhome_login">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
-   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!--<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/> -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 開相簿用，讀取外部儲存權限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 拍照用，寫入外部儲存權限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 設定網路權限 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 開相簿用，讀取外部儲存權限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!-- 拍照用，寫入外部儲存權限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!-- 設定網路權限 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -25,7 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BuyHome_Login">
-
+        <activity android:name=".logout"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -34,27 +29,22 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-
-        <!--google map-->
+        <!-- google map -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-        <!--google Pay-->
+            android:value="@string/google_maps_key" /> <!-- google Pay -->
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
             android:value="true" />
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".activity.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity android:name=".activity.RateActivity" />
         <activity android:name=".DeepLinkActivity" /> <!-- Points to searchable activity so the whole app can invoke search. -->
-
-
         <activity
             android:name=".activity.SearchableActivity"
             android:launchMode="singleTop">
@@ -89,13 +79,11 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.ProductActivity" />
         <activity android:name=".activity.ProductDetailActivity" />
         <activity android:name=".Login.MainActivity" />
         <activity android:name=".MainActivity_shopping_cart" />
         <activity android:name=".MemberAreaActivity" />
-
     </application>
 
 </manifest>

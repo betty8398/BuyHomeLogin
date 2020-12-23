@@ -63,7 +63,12 @@ public class MemberAreaActivity extends AppCompatActivity {
             userid = account.getId();
             useremail = account.getEmail();
             username = account.getDisplayName();
-            userphotourl = account.getPhotoUrl().toString();
+
+            try {
+                userphotourl = account.getPhotoUrl().toString();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         //FirebaseAuth 實體

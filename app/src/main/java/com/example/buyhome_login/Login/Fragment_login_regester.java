@@ -55,7 +55,7 @@ public class Fragment_login_regester extends Fragment {
     private FirebaseDatabase fbControl;
     private String name, email, password;
     private long index;
-    private boolean userExist;
+
 
     public Fragment_login_regester() {
         // Required empty public constructor
@@ -165,6 +165,7 @@ public class Fragment_login_regester extends Fragment {
                                             Log.d(TAG, "更新firebase json會員資料 成功");
                                             Intent intent = new Intent(getActivity(), MemberAreaActivity.class);
                                             startActivity(intent);
+                                            getActivity().finish();
                                         }
                                     });
 

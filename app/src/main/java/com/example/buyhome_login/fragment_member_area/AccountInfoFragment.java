@@ -21,13 +21,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.buyhome_login.R;
+import com.example.buyhome_login.activity.ProductActivity;
 import com.example.buyhome_login.data.MemberAreaViewModel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,6 +51,7 @@ public class AccountInfoFragment extends Fragment {
 
     //ViewModel
     private MemberAreaViewModel viewModel;
+    private Button button_out;
 
     private static final int GALLERY_REQUEST = 001;
     private static final int CAMERA_REQUEST = 002;
@@ -67,6 +78,11 @@ public class AccountInfoFragment extends Fragment {
             R.drawable.arrow_right, R.drawable.arrow_right,
             R.drawable.arrow_right, R.drawable.arrow_right,
             R.drawable.arrow_right, R.drawable.arrow_right};
+    private GoogleSignInAccount account;
+    private FirebaseAuth authControl;
+    private FirebaseUser currentUser;
+    private GoogleSignInClient mGoogleSignInClient;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,6 +107,29 @@ public class AccountInfoFragment extends Fragment {
         if(viewModel.getHasPhoto()){
             imgUserPhoto.setImageBitmap(viewModel.getUserPhotoBitmap());
         }
+
+        //登出
+        button_out = view.findViewById(R.id.button_out);
+        //google最近登入的會員
+        account = GoogleSignIn.getLastSignedInAccount(getActivity());
+
+        //FirebaseAuth 實體
+        authControl = FirebaseAuth.getInstance();
+        currentUser = authControl.getCurrentUser();
+
+        button_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(account!=null){
+                    signOut();
+                    requireActivity().finish();
+                }
+                if(currentUser!=null){
+                    FirebaseAuth.getInstance().signOut();
+                    requireActivity().finish();
+                }
+            }
+        });//登出結束
 
         cvUserPhoto = view.findViewById(R.id.cv_user_photo);
         cvUserPhoto.setOnClickListener(new View.OnClickListener() {
@@ -172,6 +211,21 @@ public class AccountInfoFragment extends Fragment {
         Intent cameraIntent = new Intent();
         cameraIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, CAMERA_REQUEST);
+    }
+
+    private void signOut() {
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // ...
+                    }
+                });
     }
 
     @Override
