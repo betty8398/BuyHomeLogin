@@ -11,8 +11,8 @@ public class MemberAreaViewModel extends ViewModel {
     public String payMethod;
 
     //使用者基本資訊
-    public Boolean hasPhoto;
-    public Bitmap userPhotoBitmap;
+    public static Boolean hasPhoto;
+    public static Bitmap userPhotoBitmap;
     public String nickname;
     public String email;
 
@@ -52,7 +52,7 @@ public class MemberAreaViewModel extends ViewModel {
                 "宅配");
 
         initUserBasicInfo(
-                false,
+                hasPhoto,
                 "Mr. Hello World",
                 "myaccount@gmail.com");
 

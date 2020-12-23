@@ -63,23 +63,19 @@ public class MemberAreaActivity extends AppCompatActivity {
             userid = account.getId();
             useremail = account.getEmail();
             username = account.getDisplayName();
-
-            try {
-                userphotourl = account.getPhotoUrl().toString();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            userphotourl = account.getPhotoUrl().toString();
         }
 
         //FirebaseAuth 實體
         authControl = FirebaseAuth.getInstance();
         user = authControl.getCurrentUser();//(最近登入用戶)
         if(user!=null){
+
             userid = user.getUid();
             useremail = user.getEmail();
             username = user.getDisplayName();
-            userphotourl = "https://lh3.googleusercontent.com/a-/AOh14GjGp02JIlI42UYlBGh-D_NPsJYeN7pROOrmJpoNkw";
 
+            userphotourl = "https://lh3.googleusercontent.com/a-/AOh14GjGp02JIlI42UYlBGh-D_NPsJYeN7pROOrmJpoNkw";
         }
 
 

@@ -1,6 +1,8 @@
 package com.example.buyhome_login.fragment_member_area;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -79,9 +82,14 @@ public class MemberAreaFragment extends Fragment {
 
         imgUserPhoto = view.findViewById(R.id.img_user_photo);
         if(viewModel.getHasPhoto()){
-            imgUserPhoto.setImageBitmap(viewModel.getUserPhotoBitmap());
+            Log.d("myTest", "使用 Bitmap ");
+            Drawable d = new BitmapDrawable(getResources(), viewModel.getUserPhotoBitmap());
+            imgUserPhoto.setBackground(d);
+            mImageRequester.setImageFromUrl(imgUserPhoto,"");
+        }else{
+            Log.d("myTest", "使用 Url ");
+            mImageRequester.setImageFromUrl(imgUserPhoto,memberAreaActivity.userphotourl);
         }
-        mImageRequester.setImageFromUrl(imgUserPhoto,memberAreaActivity.userphotourl);
 
         tvNickname = view.findViewById(R.id.tv_nickname);
         tvNickname.setText(viewModel.getNickname());
