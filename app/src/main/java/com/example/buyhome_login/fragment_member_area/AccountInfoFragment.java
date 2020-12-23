@@ -179,7 +179,7 @@ public class AccountInfoFragment extends Fragment {
         lvAccountArea.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(context, position + "", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, position + "", Toast.LENGTH_SHORT).show();
                 switch(position){
                     case 0:
                         break;
